@@ -1,4 +1,4 @@
-/*eslint linebreak-style: ["error", "windows"]*/
+
 import { Router } from "express";
 import { pool } from "./db";
 const uuid = require("uuid");
@@ -22,17 +22,23 @@ router.post("/signin", (req, res) => {
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
 
-	pool.query(
-		"SELECT * FROM users where password=$1",
-		[saltedPassword],
-		(error, result) => {
-			if (result.rows.length > 0) {
-				res.send("successful");
-			} else {
-				res.send("please check your email and password");
-			}
-		}
-	);
+	if (email && password) {
+		pool
+			.query("SELECT * FROM users WHERE email=$1 and password=$2", [
+				email,
+				saltedPassword,
+			])
+			.then((result) => {
+				if (result.rows.length > 0) {
+					return res.status(200).send("Successfully signed in!!");
+				} else {
+					return res.status(400).send("Incorrect Username and/or Password!");
+				}
+			})
+			.catch((e) => res.send(JSON.stringify(e)));
+	} else {
+		return res.status(400).send("Please fill the email and password fields!!");
+	}
 });
 
 router.post("/register", (req, res) => {
