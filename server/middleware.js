@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import helmet from "helmet";
 import path from "path";
 

@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 
 import { Router } from "express";
 import { pool } from "./db";
@@ -19,6 +18,7 @@ router.get("/", (_, res) => {
 
 router.post("/signin", (req, res) => {
 	const { email, password } = req.body;
+	console.log(email);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
 
@@ -63,6 +63,7 @@ router.post("/register", (req, res) => {
 					[newUser.id, newUser.firstname, newUser.email, newUser.password],
 					(error, result) => {
 						res.send("user is added");
+						console.log(error, result);
 					}
 				);
 			}

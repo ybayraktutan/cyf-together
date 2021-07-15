@@ -1,5 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
-
 import { Pool } from "pg";
 
 const dbUrl =

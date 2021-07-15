@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova&family=PT+Sans+Narrow&display=swap');
+
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  font-family: 'Bona Nova', serif;
+}
+
+#login{
+  height: 400px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  margin-top: 10vh;
+  border: 1px solid #F1F1FA;
+  background-color: #F1F1FA;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#login input{
+  background-color: white;
+}
+
+input{
+  width: 100%;
+  border: 2px solid#F1F1FA ;
+  padding: 17px;
+  margin: 3px 0;
+  font-family: 'PT Sans Narrow', sans-serif;
+  border-radius: 7px;
+  /* background-color: #F1F1FA; */
+  box-shadow: none;
+}
+
+.btn-login {
+  width: 100%;
+  margin: 5px 0;
+  background-color:#6360FF;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+  border: 1px solid #F1F1FA;
+}
+
+
+.btn-register {
+  width: 100%;
+  margin: 5px 0;
+  background-color:#6360FF;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+  border: 1px solid #F1F1FA;
+}
+
+#app-header{
+  justify-self: center;
+  text-align: center;
+}
+
+.logo {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.btn-danger{
+  background-color: #FF8181;
+  text-align: center;
+}
+
+#login p{
+  color: #FF8181;
+  font-size: 12px;
+}
+
+.content{
+  padding-top: 20px;
+}
