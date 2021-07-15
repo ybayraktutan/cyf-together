@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import http from "http";
 
 import app from "./app";

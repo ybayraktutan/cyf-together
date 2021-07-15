@@ -1,6 +1,7 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Router } from "express";
 import { pool } from "./db";
-const uuid=require("uuid");
+const uuid = require("uuid");
 import SHA256 from "crypto-js/sha256";
 // import Base64 from "crypto-js/enc-base64";
 // import WordArray from "crypto-js";
@@ -10,14 +11,14 @@ import SHA256 from "crypto-js/sha256";
 const router = new Router();
 
 router.get("/", (_, res) => {
- pool.query("SELECT * FROM users", (error, result) => {
+	pool.query("SELECT * FROM users", (error, result) => {
 		res.json(result.rows);
- });
+	});
 });
-
 
 router.post("/signin", (req, res) => {
 	const { email, password } = req.body;
+	console.log(email);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
 
@@ -56,6 +57,7 @@ router.post("/register", (req, res) => {
 					[newUser.id, newUser.firstname, newUser.email, newUser.password],
 					(error, result) => {
 						res.send("user is added");
+						console.log(error, result);
 					}
 				);
 			}
@@ -64,5 +66,3 @@ router.post("/register", (req, res) => {
 });
 
 export default router;
-
-

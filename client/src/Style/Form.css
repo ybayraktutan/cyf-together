@@ -1,0 +1,35 @@
+.head-img {
+  width: 25%;
+  height: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -190px;
+  transform: translate(-50%, -50%);
+}
+
+.form-content-right {
+  border-radius: 0 10px 10px 0;
+  position: relative;
+}
+
+.form-img-2 {
+  width: 60%;
+  height: 60%;
+  margin-top: -50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-success {
+display: flex;
+justify-content: center;
+padding-top: 100px;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 80px;
+  color: black;
+  font-size: 30px;
+}
