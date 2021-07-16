@@ -1,9 +1,9 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import "./Style/App.css";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./Pages/Home";
+import Home from "./pages/Home";
 import About from "./pages/About";
 
 function App() {

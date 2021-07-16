@@ -20,7 +20,6 @@ router.get("/", (_, res) => {
 });
 
 router.post("/signin", (req, res) => {
-	console.log("signin called");
 	const { email, password } = req.body;
 	console.log(email);
 	console.log(password);
