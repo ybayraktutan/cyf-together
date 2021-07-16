@@ -19,7 +19,7 @@ const RegistrationForm = ({ submitForm }) => {
 
 	return (
 		<>
-			<Header title={"Feelz"} word={"Your relational development companion"} />
+			<Header title={"Feelz"} word={"We are happier and healthier together"} />
 
 			<div id="login">
 				<form onSubmit={handleSubmit} className="form" noValidate>
@@ -28,7 +28,7 @@ const RegistrationForm = ({ submitForm }) => {
 							className="err-log"
 							type="text"
 							id="firstname"
-							placeholder="firstname"
+							placeholder="Firstname"
 							value={values.firstname}
 							onChange={(e) => handleChange(e)}
 						/>
@@ -67,15 +67,17 @@ const RegistrationForm = ({ submitForm }) => {
 						/>
 						{errors.passwordCheck && <p>{errors.passwordCheck}</p>}
 					</div>
-					<button className="btn-login" type="submit">
+					<button className="btn-register" type="submit">
 						Register
 					</button>
 					<span className="title-account">
-						<h5>
+						<h5 className="account">
 							Already have an account?{" "}
 							<Link to="/login" style={linkStyle} onClick={login}>
 								{" "}
-								Sign In
+								<button className="btn-login" type="submit">
+									Sign In
+								</button>
 							</Link>
 						</h5>
 					</span>
