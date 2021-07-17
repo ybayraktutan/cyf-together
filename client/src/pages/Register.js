@@ -11,10 +11,8 @@ const Register = () => {
 	return (
 		<>
 			<div className="form-container">
-				<span className="close-btn">×</span>
-				<div className="form-content-left">
-					{/* <img className="head-img" src={logo} alt="alt" /> */}
-				</div>
+				{/* <span className="close-btn">×</span> */}
+
 				{!isSubmitted ? (
 					<RegistrationForm submitForm={submitForm} />
 				) : (

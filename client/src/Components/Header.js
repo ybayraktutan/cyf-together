@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory, NavLink } from "react-router-dom";
+import logo from "../pages/logo1.png";
 
 const Header = (props) => {
 	const history = useHistory();
@@ -8,7 +9,9 @@ const Header = (props) => {
 	return (
 		<div id="app-header">
 			<div className="logo">
-				{/* <img alt="logo" src={logo} /> */}
+				<img className="logo" src={logo} alt="logo" />
+			</div>
+			<div>
 				<h1>{props.title}</h1>
 			</div>
 			<div className="content">

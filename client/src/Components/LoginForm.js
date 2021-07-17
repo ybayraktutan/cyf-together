@@ -46,11 +46,13 @@ const LoginForm = ({ submitForm }) => {
 						Sign In
 					</button>
 					<span className="title-account">
-						<h5>
+						<h5 className="account">
 							Don&apos;t have an account?{" "}
 							<Link to="/register" style={linkStyle} onClick={register}>
 								{" "}
-								Register
+								<button className="btn-register" type="submit">
+									Register
+								</button>
 							</Link>
 						</h5>
 					</span>
