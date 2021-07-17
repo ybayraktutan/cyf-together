@@ -62,10 +62,16 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: 3vh;
+  margin-top: 4vh;
   border: 1px solid #F1F1FA;
   background-color: #F1F1FA;
   border-radius: 10px;
   padding: 20px; 
   color: black; 
+}
+
+.section.title {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
 }

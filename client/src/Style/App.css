@@ -36,6 +36,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
+  margin-top: 3vh;
   border: 1px solid #F1F1FA;
   background-color: #F1F1FA;
   border-radius: 10px;

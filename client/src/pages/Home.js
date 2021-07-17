@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Components/Header";
 import { useHistory } from "react-router-dom";
 import "../Style/Home.css";
+import * as Icon from "react-feather";
 
 const HomePage = () => {
 	const history = useHistory();
@@ -21,19 +22,30 @@ const HomePage = () => {
 			</div>
 			<div className="container-option">
 				<div>
-					<h3 className="section__title">Reflect</h3>
-					<span className="section__subtitle">
-						Discover yourself and what matters to you
-					</span>
+					<div className="section__title">
+						<Icon.Key />
+						<h3>Reflect</h3>
+					</div>
+					<div>
+						<span className="section__subtitle">
+							Discover yourself and what matters to you
+						</span>
+					</div>
 				</div>
 				<div>
-					<h3 className="section__title">Learn</h3>
+					<div className="section__title">
+						<Icon.Search />
+						<h3>Learn</h3>
+					</div>
 					<span className="section__subtitle">
 						Bite-sized expert learning on relationships
 					</span>
 				</div>
 				<div>
-					<h3 className="section__title">Practice</h3>
+					<div className="section__title">
+						<Icon.Home />
+						<h3>Practice</h3>
+					</div>
 					<span className="section__subtitle">
 						Build positive routines and habits
 					</span>
