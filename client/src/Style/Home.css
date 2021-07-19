@@ -53,6 +53,30 @@
   padding:0 2rem;
 }
 
+.practice-attribute {
+  margin-top: 30px;
+  padding-top: 30px;
+}
+
+.description {
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.show-more {
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.author {
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.practice-attribute h5{
+color:grey;
+}
+
 .btn-continue {
   width: 100%;
   margin-top: 20px;
@@ -63,6 +87,24 @@
   color: white;
   font-size: 16px;
   border: 1px solid #F1F1FA;
+  cursor: pointer;
+}
+
+.btn-practice{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+  background-color:#6360FF;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+  border: 1px solid #F1F1FA;
+  cursor: pointer;
 }
 
 .log-out{
@@ -78,4 +120,30 @@
 
 #log-out :hover{
     color:#413fb4;    
+.container-option{
+  margin-top: 20px;
+}
+
+#practice-icon{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+#practice-header{
+  display: flex;
+  justify-content: space-around;
+   align-items: center;
+}
+
+.clock {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+
+#practice-footer{
+  display: flex;
+  justify-content: space-around;
+   align-items: center;
 }
