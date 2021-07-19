@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
-import Header from "../Components/Header";
 import regValid from "../Utils/regValid";
 import useForm from "../Utils/useFormreg";
 
@@ -19,8 +18,6 @@ const RegistrationForm = ({ submitForm }) => {
 
 	return (
 		<>
-			<Header title={"Feelz"} word={"We are happier and healthier together"} />
-
 			<div id="login">
 				<form onSubmit={handleSubmit} className="form" noValidate>
 					<div className="form-inputs">

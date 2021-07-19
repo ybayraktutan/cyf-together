@@ -1,26 +1,17 @@
 import React from "react";
-import { useHistory, NavLink } from "react-router-dom";
-import logo from "../pages/logo1.png";
+import logo from "../Utils/logo.png";
 
-const Header = (props) => {
-	const history = useHistory();
-
-	const login = () => history.push("/login");
+const Header = () => {
 	return (
 		<div id="app-header">
 			<div className="logo">
 				<img className="logo" src={logo} alt="logo" />
 			</div>
 			<div>
-				<h1>{props.title}</h1>
+				<h1>Feelz</h1>
 			</div>
 			<div className="content">
-				<p>{props.word}</p>
-			</div>
-			<div>
-				<NavLink to="/login" onClick={login} id="log-out">
-					{props.nav}
-				</NavLink>
+				<p>We are happier and healthier together</p>
 			</div>
 		</div>
 	);
