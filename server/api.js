@@ -50,7 +50,10 @@ router.post("/signin", (req, res) => {
 			])
 			.then((result) => {
 				if (result.rows.length > 0) {
-					return res.json({ auth: "success" });
+					const token = jwt.sign({ email: email, id: 1 }, "shhhhh");
+
+					// return res.json({ auth: "success" });
+					return res.json({ token: token });
 				} else {
 					return res.status(400).json({ auth: "error", errors });
 				}
