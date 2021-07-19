@@ -5,11 +5,8 @@ const uuid = require("uuid");
 import SHA256 from "crypto-js/sha256";
 import * as EmailValidator from "email-validator";
 const passwordValidator = require("password-validator");
+const jwt = require("jsonwebtoken");
 
-// import Base64 from "crypto-js/enc-base64";
-// import WordArray from "crypto-js";
-// import PBKDF2 from "crypto-js";
-// const CryptoJS = require("crypto-js");
 
 const errors = {};
 
@@ -130,6 +127,51 @@ router.post("/register", (req, res) => {
 	} else {
 		res.json({ msg: "Please enter the correct details!!!", errorMessages });
 	}
+});
+
+router.get("/practise", (req, res) => {
+	//post olmali get degil
+	console.log("hello from practise");
+	// const { email, token } = req.body;
+	//check token no need to email only token
+	//I need to send userid in token to be able to use here wile signing in
+	//24 saat
+	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
+	//reflective icin endpoint olmali mi?????
+const userID=2;
+		pool
+			.query("SELECT lastpractise_id FROM users WHERE id=$1", [
+				userID,
+			])
+			.then((result) => {
+				pool
+					.query("SELECT * FROM practises WHERE id=$1", [result.rows[0].lastpractise_id+1])
+					.then((result) => {
+						return res.json(result.rows);
+					})
+					.catch((e) => res.send(JSON.stringify(e)));
+
+				})
+			.catch((e) => res.send(JSON.stringify(e)));
+
+});
+router.post("/reflects", (req, res) => {
+	console.log("hello from reflect");
+		// const { answer,practise_id } = req.body;
+const answer="Bu gun icime atmadim yedimmmmm";
+const  practise_id=4;
+	 //tokeni al....check et.......
+	 //answeri bodyden all----FRONT END bana answeri ve practise_id yi gonder gonder......userid yi biliyom answer var.....
+	const userID = 2;
+	pool
+		.query(
+			"INSERT INTO reflects VALUES (10, $1,$2,$3)",
+			[userID,answer,practise_id]
+		)
+		.then((result) => {
+			res.json({ "message": "reflective is inserted" });
+		})
+		.catch((e) => res.send(JSON.stringify(e)));
 });
 
 export default router;
