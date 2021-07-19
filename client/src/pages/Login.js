@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import LoginForm from "../Components/LoginForm";
-// import logo from "../pages/logo1.png";
 import { Redirect } from "react-router-dom";
 import "../Style/Form.css";
 import Header from "../Components/Header";
@@ -14,16 +13,11 @@ const Login = () => {
 	return (
 		<>
 			<div className="form-container">
-				{/* <span className="close-btn">×</span> */}
-
-				<Header
-					title={"Feelz"}
-					word={"We are happier and healthier together"}
-				/>
+				<Header />
 				{!isSubmitted ? (
 					<LoginForm submitForm={submitForm} />
 				) : (
-					<Redirect to="/success" />
+					<Redirect to="/Home" />
 				)}
 			</div>
 		</>

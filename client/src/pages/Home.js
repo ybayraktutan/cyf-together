@@ -1,59 +1,59 @@
 import React from "react";
-import Header from "../Components/Header";
 import { useHistory } from "react-router-dom";
 import "../Style/Home.css";
 import * as Icon from "react-feather";
+import Logout from "./Logout";
 
 const HomePage = () => {
 	const history = useHistory();
 	const newPage = () => history.push("/new");
 	return (
 		<div className="container">
-			<Header nav={"Log Out"} />
-			<div className="project__bg">
-				<div className="project__data">
+			<div className="title">
 					<h2>Caring starts with you</h2>
 					<p>
-						Daily exrecises to develope your relationships, using cognitive
-						bhavioural therapy non-voilent communication, behavioural science,
+						Daily exercises to develope your relationships, using cognitive
+						behavioural therapy non violent communication, behavioural science,
 						mindfulness and breathwork.
 					</p>
-				</div>
 			</div>
 			<div className="container-option">
 				<div>
-					<div className="section__title">
+					<div className="section-title">
 						<Icon.Key />
 						<h3>Reflect</h3>
 					</div>
 					<div>
-						<span className="section__subtitle">
+						<p>
 							Discover yourself and what matters to you
-						</span>
+						</p>
 					</div>
 				</div>
 				<div>
-					<div className="section__title">
+					<div className="section-title">
 						<Icon.Search />
 						<h3>Learn</h3>
 					</div>
-					<span className="section__subtitle">
+					<p>
 						Bite-sized expert learning on relationships
-					</span>
+					</p>
 				</div>
 				<div>
-					<div className="section__title">
+					<div className="section-title">
 						<Icon.Home />
 						<h3>Practice</h3>
 					</div>
-					<span className="section__subtitle">
+					<p>
 						Build positive routines and habits
-					</span>
+					</p>
 				</div>
 				<div>
 					<button type="button" className="btn-continue" onClick={newPage}>
 						Continue
 					</button>
+				</div>
+				<div className="log-out">
+					<Logout nav={"Log Out"} />
 				</div>
 			</div>
 		</div>

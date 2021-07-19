@@ -26,9 +26,9 @@
 }
 
 .form-success {
-display: flex;
-justify-content: center;
-padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
   text-align: center;
   font-size: 24px;
   margin-top: 80px;
