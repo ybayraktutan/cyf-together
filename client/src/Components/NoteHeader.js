@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { useHistory, NavLink } from "react-router-dom";
 
@@ -10,7 +11,9 @@ const NoteHeader = (props) => {
 		<div id="note-header">
 			<div className="back-btn">
 				<div>
-					<NavLink to="/practice" component={PracticePage}>{props.img}</NavLink>
+					<NavLink to="/practice" component={PracticePage}>
+						{props.img}
+					</NavLink>
 				</div>
 			</div>
 			<h5>{props.text}</h5>

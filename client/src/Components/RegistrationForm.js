@@ -1,7 +1,6 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import Header from "../Components/Header";
 import useForm from "../Utils/useFormreg";
 
 const RegistrationForm = () => {
@@ -71,7 +70,6 @@ const RegistrationForm = () => {
 	};
 
 	return (
-			<>
 			<div id="login">
 				<form onSubmit={handleSubmit} className="form" noValidate>
 					<div className="form-inputs">
@@ -118,7 +116,6 @@ const RegistrationForm = () => {
 						/>
 						{/* {errors.passwordCheck && <p>{errors.passwordCheck}</p>} */}
 					</div>
-					<button className="btn-register" type="submit">
 					{errors.emptyField.length < 1 && <p>{errors.emptyField}</p>}
 					<button className="btn-login" type="submit">
 						Register
@@ -136,7 +133,6 @@ const RegistrationForm = () => {
 					</span>
 				</form>
 			</div>
-		</>
 	);
 };
 

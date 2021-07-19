@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import NoteHeader from "./NoteHeader";

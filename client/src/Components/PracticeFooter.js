@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Icon } from "@iconify/react";
 import homeIcon from "@iconify-icons/feather/home";
@@ -7,7 +8,7 @@ import "../Style/Home.css";
 
 const PracticeFooter = () => {
 	return (
-		<div id="practice-footer" >
+		<div id="practice-footer">
 			<div>
 				<Icon icon={homeIcon} />
 			</div>

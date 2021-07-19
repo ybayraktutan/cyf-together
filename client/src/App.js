@@ -18,7 +18,7 @@ function App() {
 					<Route path="/Home" component={Home}></Route>
 					<Route path="/home" component={Home}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
-					<Route path="/newpage" component={NotePage}></Route>
+					<Route path="/notes" component={NotePage}></Route>
 				</Switch>
 			</BrowserRouter>
 		</div>

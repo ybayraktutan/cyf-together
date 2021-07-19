@@ -1,7 +1,8 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Pool } from "pg";
 
 const dbUrl =
-	process.env.DATABASE_URL ||"postgres://cyf:cyf@localhost:5432/cyf";
+	process.env.DATABASE_URL || "postgres://remen:0852@localhost:5432/cyf";
 
 export const pool = new Pool({
 	connectionString: dbUrl,

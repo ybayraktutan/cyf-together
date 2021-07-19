@@ -24,12 +24,6 @@ function handlePassword(password) {
 	}
 }
 
-
-// import Base64 from "crypto-js/enc-base64";
-// import WordArray from "crypto-js";
-// import PBKDF2 from "crypto-js";
-// const CryptoJS = require("crypto-js");
-
 const router = new Router();
 
 router.get("/", (_, res) => {
@@ -57,7 +51,6 @@ router.post("/signin", (req, res) => {
 				if (result.rows.length > 0) {
 					return res.json({ auth: "success" });
 				} else {
-					return res.status(400).json({ auth: "error" });
 					return res.status(400).json({ auth: "error", errors });
 				}
 			})
@@ -118,14 +111,9 @@ router.post("/register", (req, res) => {
 			}
 		);
 	} else {
-		res.json({ register: "error" });
-	}
-});
-
-export default router;
-
 		res.json({ msg: "Please enter the correct details!!!" });
 	}
 });
 
 export default router;
+

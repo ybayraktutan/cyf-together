@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../Style/Home.css";
@@ -6,7 +7,6 @@ import PracticeHeader from "./PracticeHeader";
 import { Icon } from "@iconify/react";
 import clockIcon from "@iconify-icons/feather/clock";
 import userIcon from "@iconify-icons/feather/user";
-
 
 const Practice = () => {
 	const history = useHistory();
@@ -47,7 +47,7 @@ const Practice = () => {
 			</div>
 			<div>
 				<button type="button" className="btn-practice" onClick={newPage}>
-				Practice
+					Practice
 				</button>
 			</div>
 			<div>
