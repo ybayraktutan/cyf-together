@@ -125,12 +125,6 @@ jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err,user)=>{
 }
 
 router.get("/practise", authenticateToken,(req, res) => {
-
-	//I need to send userid in token to be able to use here wile signing in
-	//24 saat
-	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
-	//reflective icin endpoint olmali mi?????
-	console.log("USER IS"+req.user.email);
 const userID = req.user.userid;
 const currentTime = new Date();
 		pool
