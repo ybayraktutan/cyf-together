@@ -34,14 +34,16 @@ router.get("/", (_, res) => {
 });
 
 router.post("/signin", (req, res) => {
+	//take email and password from front end
 	const { email, password } = req.body;
 	handleEmail(email);
 	console.log(email);
 	console.log(password);
 
+	//hash and salt the password
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
-
+    //check hashed password in database and return token if passwords match
 	if (email && password) {
 		pool
 			.query("SELECT * FROM users WHERE email=$1 and password=$2", [
@@ -49,8 +51,14 @@ router.post("/signin", (req, res) => {
 				saltedPassword,
 			])
 			.then((result) => {
+				console.log(result.rows.length);
 				if (result.rows.length > 0) {
-					const token = jwt.sign({ email: email, id: 1 }, "shhhhh");
+					//create token and return as a json object
+					const token = jwt.sign(
+						{ email: email, userid: result.rows[0].id, usertype: "user" },
+						"SECRETmurattiisthelatestversionofme",
+						{ expiresIn: 60 }
+					);
 
 					// return res.json({ auth: "success" });
 					return res.json({ token: token });
@@ -84,7 +92,7 @@ router.post("/register", (req, res) => {
 		.has()
 		.lowercase() // Must have lowercase letters
 		.has()
-		.digits(1) // Must have at least 2 digits
+		.digits(1) // Must have at least 1 digits
 		.has()
 		.not()
 		.spaces();
@@ -102,6 +110,7 @@ router.post("/register", (req, res) => {
 		errorMessages.passwordCheck = "Password do not match";
 	}
 
+	console.log(hashedPassword);
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
 			id: uuid.v4(),
@@ -117,8 +126,8 @@ router.post("/register", (req, res) => {
 					res.json({ register: "error-registereduser" });
 				} else {
 					pool.query(
-						"INSERT INTO users (id,firstname,email,password) VALUES ($1,$2,$3,$4)",
-						[newUser.id, newUser.firstname, newUser.email, newUser.password],
+						"INSERT INTO users (id,firstname,email,password,lastpractise_id,user_type) VALUES ($1,$2,$3,$4,$5,$6)",
+						[newUser.id, newUser.firstname, newUser.email, newUser.password, 0,"user"],
 						(error, result) => {
 							res.json({ register: "success" });
 							console.log(error, result);
@@ -132,7 +141,26 @@ router.post("/register", (req, res) => {
 	}
 });
 
-router.get("/practise", (req, res) => {
+function authenticateToken(req,res,next){
+console.log(req.headers["authorization"]);
+const authHeader=req.headers["authorization"];
+const token=authHeader && authHeader.split(" ")[1];
+console.log("tOKEN IS"+token);
+if (token == null){
+return res.sendStatus(401);
+}
+// jwt.verify(token, "murattiisthelatestversionofme",(err,({ email: email, userid:1 , usertype:"user" }))=>{
+// if (err) {return res.sendStatus(403)}
+// });
+jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err)=>{
+	if(err){
+		res.sendStatus(403);
+	}
+});
+
+next();
+}
+router.get("/practise", authenticateToken,(req, res) => {
 	//post olmali get degil
 	console.log("hello from practise");
 	// const { email, token } = req.body;
@@ -141,7 +169,7 @@ router.get("/practise", (req, res) => {
 	//24 saat
 	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
 	//reflective icin endpoint olmali mi?????
-const userID=2;
+const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 		pool
 			.query("SELECT lastpractise_id FROM users WHERE id=$1", [
 				userID,
@@ -158,17 +186,17 @@ const userID=2;
 			.catch((e) => res.send(JSON.stringify(e)));
 
 });
-router.post("/reflects", (req, res) => {
+router.post("/reflects",authenticateToken, (req, res) => {
 	console.log("hello from reflect");
 		// const { answer,practise_id } = req.body;
-const answer="Bu gun icime atmadim yedimmmmm";
-const  practise_id=4;
+const answer="Bu kiz bizi batirdi.Bu gun icime atmadim yedimmmmm";
+const  practise_id=2;
 	 //tokeni al....check et.......
 	 //answeri bodyden all----FRONT END bana answeri ve practise_id yi gonder gonder......userid yi biliyom answer var.....
-	const userID = 2;
+	const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 	pool
 		.query(
-			"INSERT INTO reflects VALUES (10, $1,$2,$3)",
+			"INSERT INTO reflects VALUES (14, $1,$2,$3)",
 			[userID,answer,practise_id]
 		)
 		.then((result) => {
