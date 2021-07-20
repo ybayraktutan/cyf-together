@@ -1,4 +1,4 @@
-
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Router } from "express";
 import { pool } from "./db";
 const uuid = require("uuid");
@@ -11,6 +11,23 @@ const passwordValidator = require("password-validator");
 // import PBKDF2 from "crypto-js";
 // const CryptoJS = require("crypto-js");
 
+const errors = {};
+
+function handleEmail(email) {
+	const isValidEmail = EmailValidator.validate(email);
+	if (!isValidEmail) {
+		errors.email = "Invalid Email/Password";
+	}
+}
+
+function handlePassword(password) {
+	const schema = new passwordValidator();
+	const isValidPassword = schema.validate(password);
+	if (!isValidPassword) {
+		errors.password = "Please enter a valid password";
+	}
+}
+
 const router = new Router();
 
 router.get("/", (_, res) => {
@@ -21,6 +38,7 @@ router.get("/", (_, res) => {
 
 router.post("/signin", (req, res) => {
 	const { email, password } = req.body;
+	handleEmail(email);
 	console.log(email);
 	console.log(password);
 
@@ -42,7 +60,9 @@ router.post("/signin", (req, res) => {
 			})
 			.catch((e) => res.send(JSON.stringify(e)));
 	} else {
-		return res.status(400).send("Please fill the email and password fields!!");
+		return res
+			.status(400)
+			.json({ msg: "Please fill the email and password fields!!!" });
 	}
 });
 
@@ -65,6 +85,8 @@ router.post("/register", (req, res) => {
 		.has()
 		.not()
 		.spaces();
+		handleEmail(email);
+		handlePassword(password);
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
@@ -95,9 +117,8 @@ router.post("/register", (req, res) => {
 			}
 		);
 	} else {
-		res.json({ register: "error" });
+		res.json({ msg: "Please enter the correct details!!!" });
 	}
 });
 
 export default router;
-
