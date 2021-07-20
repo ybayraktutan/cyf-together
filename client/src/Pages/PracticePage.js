@@ -1,37 +1,64 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import "../Style/Home.css";
-import { Container, Button, Card } from "react-bootstrap";
+import { useHistory, Link } from "react-router-dom";
+import { Container, Button, Card, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PracticeFooter from "./PracticeFooter";
-import PracticeHeader from "./PracticeHeader";
+import PracticeFooter from "../Components/PracticeFooter";
+import PracticeHeader from "../Components/PracticeHeader";
 import { Icon } from "@iconify/react";
-import clockIcon from "@iconify-icons/feather/clock";
 import userIcon from "@iconify-icons/feather/user";
+import "../Style/Practice.css";
 
 const PracticePage = () => {
 	const history = useHistory();
 	const note = () => history.push("/notes");
+
+	const linkStyle = {
+		width: "20rem",
+		borderRadius: "20px",
+	};
+
 	return (
-		<div>
-			<Container>
-				<Card className="mb-3">
-					<PracticeHeader
-						text="Today's Practice"
-						img={<Icon icon={clockIcon} />}
-					/>
-					<Card.Body>
-						<Card.Title>Let it Go</Card.Title>
-						<Card.Subtitle className="mb-2 text-muted">
-							Let go of a small grudge that is holding you back
-						</Card.Subtitle>
+		<div id="practice">
+			<Container style={linkStyle} className="container">
+				<Card className="mb-3" style={linkStyle}>
+					<PracticeHeader />
+					<Card.Body className="practice-top">
 						<div>
-							<button>Gratitude</button>
-							<button>Connection</button>
+							<Card.Title style={{ color: "white" }}>Let it Go</Card.Title>
+							<p>Let go of a small grudge that is holding you back</p>
+							<div className="category">
+								<span>
+									<Badge
+										className="badge"
+										pill
+										bg="secondary"
+										text="light"
+										style={{ backgroundColor: "#F1F1FA" }}
+									>
+										Gratitude
+									</Badge>{" "}
+								</span>
+								&nbsp;
+								<span>
+									<Badge
+										pill
+										bg="secondary"
+										text="light"
+										style={{ backgroundColor: "#F1F1FA" }}
+									>
+										Connection
+									</Badge>{" "}
+								</span>
+							</div>
 						</div>
+					</Card.Body>
+					<Card.Body className="practice-bottom">
 						<div className="practice-attribute">
 							<div className="description">
-								<Card.Subtitle className="mb-2 text-muted">
+								<Card.Subtitle
+									className="mb-2 text-muted"
+									style={{ fontSize: "12px" }}
+								>
 									Description
 								</Card.Subtitle>
 								<p>
@@ -41,22 +68,41 @@ const PracticePage = () => {
 								</p>
 							</div>
 							<div className="show-more">
-								<p>Show more</p>
+								<Link to="#" style={{ textDecoration: "none" }}>
+									<p>Show more</p>
+									<hr style={{ backgroundColor: "#91919F" }}></hr>
+								</Link>
 							</div>
 							<div className="author">
-								<Card.Subtitle className="mb-2 text-muted">
+								<Card.Subtitle
+									className="mb-2 text-muted"
+									style={{ fontSize: "12px" }}
+								>
 									Author
 								</Card.Subtitle>
-								<div className="profile">
-									<img alt="" src={<Icon icon={userIcon} />} />
+								<div id="profile">
 									<Icon icon={userIcon} />
-									<span>Firstname Lastname</span>
+									{/* <span>{name.name}</span> */}
 								</div>
 							</div>
 						</div>
-						<Button type="button" className="btn-practice" onClick={note}>
-							Practice
-						</Button>
+						<div className="btn-practice">
+							<Link to="/notes" onClick={note}>
+								<Button
+									type="button"
+									variant="primary"
+									size="sm"
+									style={{
+										color: "white",
+										backgroundColor: "#6360FF",
+										width: "100%",
+										borderRadius: "7px",
+									}}
+								>
+									Practice
+								</Button>
+							</Link>
+						</div>
 					</Card.Body>
 					<Card.Footer>
 						<PracticeFooter />
