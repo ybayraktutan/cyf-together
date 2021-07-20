@@ -31,6 +31,7 @@ router.post("/signin", (req, res) => {
 				saltedPassword,
 			])
 			.then((result) => {
+				console.log(result.rows.length);
 				if (result.rows.length > 0) {
 					//create token and return as a json object
 					const user={ email: email, userid: result.rows[0].id, usertype: "user" };
