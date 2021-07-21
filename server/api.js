@@ -30,12 +30,10 @@ router.post("/signin", (req, res) => {
 				saltedPassword,
 			])
 			.then((result) => {
-				console.log(result.rows.length);
 				if (result.rows.length > 0) {
 					//create token and return as a json object
-					const token = jwt.sign(
-						{ email: email, userid: result.rows[0].id, usertype: "user" },
-						"SECRETmurattiisthelatestversionofme",
+					const user={ email: email, userid: result.rows[0].id, usertype: "user" };
+					const token = jwt.sign(user,"SECRETmurattiisthelatestversionofme",
 						{ expiresIn: 60 }
 					);
 
@@ -113,27 +111,28 @@ console.log("tOKEN IS"+token);
 if (token == null){
 return res.sendStatus(401);
 }
-// jwt.verify(token, "murattiisthelatestversionofme",(err,({ email: email, userid:1 , usertype:"user" }))=>{
-// if (err) {return res.sendStatus(403)}
-// });
-jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err)=>{
+
+//verify token if it is verified contunie with end point otherwise send a forbidden 403 message to front end
+jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err,user)=>{
 	if(err){
 		res.sendStatus(403);
 	}
-});
+	req.user=user;
+	next();
 
-next();
+});
 }
+
 router.get("/practise", authenticateToken,(req, res) => {
-	//post olmali get degil
-	console.log("hello from practise");
-	// const { email, token } = req.body;
-	//check token no need to email only token
+
 	//I need to send userid in token to be able to use here wile signing in
 	//24 saat
 	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
 	//reflective icin endpoint olmali mi?????
-const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
+	console.log("USER IS"+req.user.email);
+// const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
+const userID = req.user.userid;
+
 		pool
 			.query("SELECT lastpractise_id FROM users WHERE id=$1", [
 				userID,
@@ -150,6 +149,23 @@ const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 			.catch((e) => res.send(JSON.stringify(e)));
 
 });
+
+router.post("/practise/completed", authenticateToken, (req, res) => {
+	const practise_id=req.body.practise_id;
+	const userID = req.user.userid;
+	pool
+		.query("UPDATE users SET lastpractise_id=$1
+				.query("SELECT * FROM practises WHERE id=$1", [
+					result.rows[0].lastpractise_id + 1,
+				])
+				.then((result) => {
+					return res.json(result.rows);
+				})
+				.catch((e) => res.send(JSON.stringify(e)));
+		})
+		.catch((e) => res.send(JSON.stringify(e)));
+});
+
 router.post("/reflects",authenticateToken, (req, res) => {
 	console.log("hello from reflect");
 		// const { answer,practise_id } = req.body;
