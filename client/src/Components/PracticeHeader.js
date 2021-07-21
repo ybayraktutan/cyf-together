@@ -1,25 +1,19 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
+import { Icon } from "@iconify/react";
+import clockIcon from "@iconify-icons/feather/clock";
 
-import "../Style/Home.css";
-
-const PracticeHeader = (props) => {
+const PracticeHeader = () => {
 	return (
 		<div id="practice-header">
 			<Container>
-				<Row>
-					<Col>
-						<h5>{props.text}</h5>
-					</Col>
-					<Col>
-						<div className="clock">
-							<div>{props.img}</div>
-							<div>
-								<h5> 1min</h5>
-							</div>
-						</div>
-					</Col>
-				</Row>
+				<Col>
+					<p>Today&apos;s Practice</p>
+				</Col>
+				<div className="clock">
+					<Icon icon={clockIcon} />
+					<span> 5 mins</span>
+				</div>
 			</Container>
 		</div>
 	);

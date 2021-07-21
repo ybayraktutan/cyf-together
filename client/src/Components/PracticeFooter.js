@@ -1,22 +1,30 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { NavLink } from "react-router-dom";
 import homeIcon from "@iconify-icons/feather/home";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
-import "../Style/Home.css";
+
+import "../Style/Practice.css";
 
 const PracticeFooter = () => {
+	const linkStyle = {
+		color: "#FF8181",
+	};
 	return (
 		<div id="practice-footer">
 			<div>
-				<Icon icon={homeIcon} />
+				<NavLink to="#" style={linkStyle}>
+					<Icon icon={homeIcon} />
+					{/* <p>Today</p> */}
+				</NavLink>
 			</div>
-			<div>
+			<span>
 				<Icon icon={searchIcon} />
-			</div>
-			<div>
+			</span>
+			<span>
 				<Icon icon={keyIcon} />
-			</div>
+			</span>
 		</div>
 	);
 };
