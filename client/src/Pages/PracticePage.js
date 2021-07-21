@@ -25,7 +25,7 @@ const PracticePage = () => {
 					<Card.Body className="practice-top">
 						<div>
 							<Card.Title style={{ color: "white" }}>Let it Go</Card.Title>
-							<p>Let go of a small grudge that is holding you back</p>
+							<p>Let go of a small grudge that is holding you back.</p>
 							<div className="category">
 								<span>
 									<Badge
