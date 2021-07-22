@@ -8,7 +8,7 @@ const PracticeHeader = () => {
 		<div id="practice-header">
 			<Container>
 				<Col>
-					<p>Today&apos;s Practice</p>
+					<p>Today&apos;s Practice.</p>
 				</Col>
 				<div className="clock">
 					<Icon icon={clockIcon} />

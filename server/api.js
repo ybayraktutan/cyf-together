@@ -55,20 +55,23 @@ router.post("/signin", (req, res) => {
 				if (result.rows.length > 0) {
 					return res.json({ auth: "success" });
 				} else {
-					return res.status(400).json({ auth: "error" });
+					return res.status(400).json({ auth: "error", errors });
 				}
 			})
 			.catch((e) => res.send(JSON.stringify(e)));
 	} else {
 		return res
 			.status(400)
-			.json({ msg: "Please fill the email and password fields!!!" });
+			.json({ msg: "Please fill the email and password fields!!!" }, errors);
 	}
 });
 
+
+const errorMessages = {};
+
 router.post("/register", (req, res) => {
 	console.log("register api");
-	const { firstname, email, password } = req.body;
+	const { firstname, email, password, passwordCheck } = req.body;
 	const isValidEmail = EmailValidator.validate(email);
 	const schema = new passwordValidator();
 	schema
@@ -90,6 +93,15 @@ router.post("/register", (req, res) => {
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
+
+	if(!isValidPassword) {
+		errorMessages.password = "please enter a valid password";
+	} else if (!isValidEmail) {
+		errorMessages.email = "Please enter a valid email";
+	} else if (password !== passwordCheck) {
+		errorMessages.passwordCheck = "Password do not match";
+	}
+
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
 			id: uuid.v4(),
@@ -102,7 +114,6 @@ router.post("/register", (req, res) => {
 			[newUser.email],
 			(error, result) => {
 				if (result.rows.length > 0) {
-					console.log("error");
 					res.json({ register: "error-registereduser" });
 				} else {
 					pool.query(
@@ -117,7 +128,7 @@ router.post("/register", (req, res) => {
 			}
 		);
 	} else {
-		res.json({ msg: "Please enter the correct details!!!" });
+		res.json({ msg: "Please enter the correct details!!!", errorMessages });
 	}
 });
 

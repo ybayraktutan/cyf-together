@@ -1,10 +1,14 @@
 /*eslint linebreak-style: ["error", "windows"]*/
-import "./Style/App.css";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import PracticePage from "./pages/PracticePage";
+import Home from "./Pages/Home";
+import PracticePage from "./Pages/PracticePage";
+import Note from "./Pages/Note";
+import Confirmation from "./Pages/Confirmation";
+import "./Style/App.css";
+
+
 
 function App() {
 	return (
@@ -16,6 +20,8 @@ function App() {
 					<Route path="/register" component={Register}></Route>
 					<Route path="/home" component={Home}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
+					<Route path="/notes" component={Note}></Route>
+					<Route path="/confirmation" component={Confirmation}></Route>
 				</Switch>
 			</BrowserRouter>
 		</div>

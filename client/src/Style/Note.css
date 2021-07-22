@@ -1,0 +1,40 @@
+.btn-note{
+    display: flex;
+    justify-content:flex-end; 
+    width:100%; 
+    padding:10px;;
+}
+
+.note-top {
+   background-color: #6360FF;
+   border-radius: 20px 20px 0 0; 
+   color: white;
+}
+
+.note-top2{
+   background-color: #6360FF;
+   border-radius: 0 0 20px 20px; 
+   color: white;
+   font-size: 14px;
+}
+
+.note-top2 p{
+   font-size: 14px;
+}
+
+
+.container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    padding:20px;
+}
+
+.note-header{
+  display: flex;
+  height:20px;
+  background-color: #6360FF;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+}

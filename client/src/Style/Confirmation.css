@@ -1,0 +1,29 @@
+#share-icons{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+.confirm-top{
+    text-align: center;
+    background-color: #6360FF;
+    border-radius: 20px 20px 20px 20px;
+    height:50%;
+    color: white;
+}
+
+.top-contents{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
+.btn-confirm {
+  margin-top: 80px;
+}
+
