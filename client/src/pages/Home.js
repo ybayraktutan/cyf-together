@@ -1,21 +1,22 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../Style/Home.css";
 import * as Icon from "react-feather";
 import Logout from "./Logout";
 
 const HomePage = () => {
 	const history = useHistory();
-	const newPage = () => history.push("/new");
+	const newPage = () => history.push("/practice");
 	return (
 		<div className="container">
 			<div className="title">
-					<h2>Caring starts with you</h2>
-					<p>
-						Daily exercises to develope your relationships, using cognitive
-						behavioural therapy non violent communication, behavioural science,
-						mindfulness and breathwork.
-					</p>
+				<h2>Caring starts with you</h2>
+				<p>
+					Daily exercises to develope your relationships, using cognitive
+					behavioural therapy non violent communication, behavioural science,
+					mindfulness and breathwork.
+				</p>
 			</div>
 			<div className="container-option">
 				<div>
@@ -24,9 +25,7 @@ const HomePage = () => {
 						<h3>Reflect</h3>
 					</div>
 					<div>
-						<p>
-							Discover yourself and what matters to you
-						</p>
+						<p>Discover yourself and what matters to you</p>
 					</div>
 				</div>
 				<div>
@@ -34,18 +33,23 @@ const HomePage = () => {
 						<Icon.Search />
 						<h3>Learn</h3>
 					</div>
-					<p>
-						Bite-sized expert learning on relationships
-					</p>
+					<p>Bite-sized expert learning on relationships</p>
 				</div>
 				<div>
-					<div className="section-title">
-						<Icon.Home />
-						<h3>Practice</h3>
-					</div>
-					<p>
-						Build positive routines and habits
-					</p>
+					<Link
+						to="/practice"
+						onClick={newPage}
+						style={
+							({ textDecoration: "none" },
+							{ color: "black" })
+						}
+					>
+						<div className="section-title">
+							<Icon.Home />
+							<h3>Practice</h3>
+						</div>
+						<p>Build positive routines and habits</p>
+					</Link>
 				</div>
 				<div>
 					<button type="button" className="btn-continue" onClick={newPage}>

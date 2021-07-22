@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+/*eslint linebreak-style: ["error", "windows"]*/
+import React from "react";
 import RegistrationForm from "../Components/RegistrationForm";
-import Login from "../pages/Login";
 import Header from "../Components/Header";
 
 const Register = () => {
-	const [isSubmitted, setIsSubmitted] = useState(false);
-
-	function submitForm() {
-		setIsSubmitted(true);
-	}
 	return (
 		<>
 			<div className="form-container">
 				<Header />
-				{!isSubmitted ? (
-					<RegistrationForm submitForm={submitForm} />
-				) : (
-					<Login />
-				)}
+				<RegistrationForm />
 			</div>
 		</>
 	);
