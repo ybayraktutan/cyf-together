@@ -2,7 +2,7 @@
 import { Pool } from "pg";
 
 const dbUrl =
-	process.env.DATABASE_URL || "postgres://remen:0852@localhost:5432/cyf";
+	process.env.DATABASE_URL || "postgres://codeyourfuture:codeyourfuture@localhost:5432/cyf";
 
 export const pool = new Pool({
 	connectionString: dbUrl,
