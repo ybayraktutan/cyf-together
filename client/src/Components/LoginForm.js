@@ -20,12 +20,12 @@ const LoginForm = () => {
 		e.preventDefault();
 
 		const body = { email: values.email, password: values.password };
-		let result = fetch("http://localhost:3000/api/signin", {
+		let result = fetch("http://localhost:3100/api/signin", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
-				Accept: "application/json",
+				"Accept": "application/json",
 			},
 		})
 			.then((res) => res.json())
@@ -36,13 +36,13 @@ const LoginForm = () => {
 					history.push("/home");
 				} else if (data.auth === "error") {
 					console.log(data);
-					setErrors((prevState) => {
-						const state = {
-							...prevState,
-							email: data.errors.email,
-						};
-						return state;
-					});
+					// setErrors((prevState) => {
+					// 	const state = {
+					// 		...prevState,
+					// 		email: data.errors.email,
+					// 	};
+					// 	return state;
+					// });
 					history.push("/login");
 				} else if (data.msg) {
 					setErrors((prevState) => {

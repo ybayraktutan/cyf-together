@@ -1,6 +1,6 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../Style/Home.css";
 import * as Icon from "react-feather";
 import Logout from "./Logout";
@@ -36,11 +36,20 @@ const HomePage = () => {
 					<p>Bite-sized expert learning on relationships</p>
 				</div>
 				<div>
-					<div className="section-title">
-						<Icon.Home />
-						<h3>Practice</h3>
-					</div>
-					<p>Build positive routines and habits</p>
+					<Link
+						to="/practice"
+						onClick={newPage}
+						style={
+							({ textDecoration: "none" },
+							{ color: "black" })
+						}
+					>
+						<div className="section-title">
+							<Icon.Home />
+							<h3>Practice</h3>
+						</div>
+						<p>Build positive routines and habits</p>
+					</Link>
 				</div>
 				<div>
 					<button type="button" className="btn-continue" onClick={newPage}>

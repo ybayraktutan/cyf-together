@@ -7,8 +7,25 @@ import PracticeHeader from "../Components/PracticeHeader";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
+//import { Database } from "react-feather";
 
 const PracticePage = () => {
+
+	// const[data, setData] = useState([]);
+
+	// const fetchData = () => {
+	// 	return fetch("https://randomuser.me/api/")
+	// 		.then((response) => response.json())
+	// 		.then((json) => {
+	// 			console.log(json);
+	// 			setData(json);
+	// 		});
+	// };
+
+	// useEffect(() => {
+	// 	fetchData();
+	// }, []);
+
 	const history = useHistory();
 	const note = () => history.push("/notes");
 
@@ -78,6 +95,7 @@ const PracticePage = () => {
 									className="mb-2 text-muted"
 									style={{ fontSize: "12px" }}
 								>
+									{" "}
 									Author
 								</Card.Subtitle>
 								<div id="profile">

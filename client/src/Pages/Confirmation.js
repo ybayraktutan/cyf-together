@@ -13,7 +13,7 @@ const Confirmation = () => {
 
 	const linkStyle = {
 		width: "20rem",
-        height:"32rem",
+		height: "32rem",
 		borderRadius: "20px",
 	};
 

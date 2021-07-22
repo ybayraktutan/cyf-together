@@ -2,6 +2,7 @@
 import React from "react";
 import LoginForm from "../Components/LoginForm";
 import "../Style/Form.css";
+import "../Style/App.css";
 import Header from "../Components/Header";
 
 const Login = () => {
