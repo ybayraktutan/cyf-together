@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Container, Button, Card, Badge } from "react-bootstrap";
@@ -10,7 +11,6 @@ import "../Style/Practice.css";
 //import { Database } from "react-feather";
 
 const PracticePage = () => {
-
 	// const[data, setData] = useState([]);
 
 	// const fetchData = () => {

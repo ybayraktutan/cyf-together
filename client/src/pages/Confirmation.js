@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Button, Card, Col, Row } from "react-bootstrap";
@@ -8,19 +9,17 @@ import messageCircle from "@iconify-icons/feather/message-circle";
 import { Emoji } from "emoji-mart";
 import "../Style/Confirmation.css";
 
-
 const Confirmation = () => {
-
 	const linkStyle = {
 		width: "20rem",
 		height: "32rem",
 		borderRadius: "20px",
 	};
 
-    const iconStyle = {
-			fontWeight: "bold",
-            fontSize: "18px",
-		};
+	const iconStyle = {
+		fontWeight: "bold",
+		fontSize: "18px",
+	};
 
 	return (
 		<div id="confirm">
@@ -69,8 +68,8 @@ const Confirmation = () => {
 										width: "100%",
 										borderRadius: "7px",
 										outline: "none",
-                                        borderStyle:"none",
-                                        borderColor:"none",
+										borderStyle: "none",
+										borderColor: "none",
 									}}
 								>
 									{" "}

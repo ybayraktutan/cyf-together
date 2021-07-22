@@ -7,7 +7,7 @@ import PracticePage from "./Pages/PracticePage";
 import Note from "./Pages/Note";
 import Confirmation from "./Pages/Confirmation";
 import "./Style/App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 
 
 function App() {
