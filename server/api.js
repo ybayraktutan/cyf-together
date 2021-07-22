@@ -104,6 +104,8 @@ router.post("/register", (req, res) => {
 	}
 });
 
+
+//verify token middleware
 function authenticateToken(req,res,next){
 	const authHeader=req.headers["authorization"];
 	const token=authHeader && authHeader.split(" ")[1];
@@ -124,6 +126,11 @@ jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err,user)=>{
 
 router.get("/practise", authenticateToken,(req, res) => {
 
+	//I need to send userid in token to be able to use here wile signing in
+	//24 saat
+	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
+	//reflective icin endpoint olmali mi?????
+	console.log("USER IS"+req.user.email);
 const userID = req.user.userid;
 const currentTime = new Date();
 		pool
@@ -149,8 +156,9 @@ const currentTime = new Date();
 			.catch((e) => res.send(JSON.stringify(e)));
 
 });
-
+//frontend should post practise_id of the completed practise
 router.post("/practise/completed", authenticateToken, (req, res) => {
+	console.log("hello from completed");
 	const practise_id=req.body.practise_id;
 	const userID = req.user.userid;
 	const timestamp=new Date();
@@ -167,12 +175,6 @@ router.post("/reflects",authenticateToken, (req, res) => {
 		const { answer,practice_id } = req.body;
 			const userID = req.user.userid;
 			console.log(req.body);
-
-// const answer="Bu kiz bizi batirdi.Bu gun icime atmadim yedimmmmm";
-// const  practise_id=2;
-	 //tokeni al....check et.......
-	 //answeri bodyden all----FRONT END bana answeri ve practise_id yi gonder gonder......userid yi biliyom answer var.....
-	// const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 	pool
 		.query(
 			"INSERT INTO reflects (id,user_id,answer,practice_id) VALUES (DEFAULT,$1,$2,$3)",
