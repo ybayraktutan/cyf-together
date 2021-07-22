@@ -4,9 +4,10 @@ import { pool } from "./db";
 const uuid = require("uuid");
 import SHA256 from "crypto-js/sha256";
 import * as EmailValidator from "email-validator";
+import { DatabaseError } from "pg";
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
-
+const moment=require("moment-timezone");
 
 const errors = {};
 
@@ -55,7 +56,7 @@ router.post("/signin", (req, res) => {
 					//create token and return as a json object
 					const user={ email: email, userid: result.rows[0].id, usertype: "user" };
 					const token = jwt.sign(user,"SECRETmurattiisthelatestversionofme",
-						{ expiresIn: 60 }
+						{ expiresIn: 600 }
 					);
 
 					// return res.json({ auth: "success" });
@@ -140,11 +141,9 @@ router.post("/register", (req, res) => {
 });
 
 function authenticateToken(req,res,next){
-console.log(req.headers["authorization"]);
-const authHeader=req.headers["authorization"];
-const token=authHeader && authHeader.split(" ")[1];
-console.log("tOKEN IS"+token);
-if (token == null){
+	const authHeader=req.headers["authorization"];
+	const token=authHeader && authHeader.split(" ")[1];
+	if (token == null){
 return res.sendStatus(401);
 }
 
@@ -161,19 +160,20 @@ jwt.verify(token, "SECRETmurattiisthelatestversionofme",(err,user)=>{
 
 router.get("/practise", authenticateToken,(req, res) => {
 
-	//I need to send userid in token to be able to use here wile signing in
-	//24 saat
-	//son practice ise ne olacak????? son practice oldugunu kontrol etmeliyim nasil select all from practisis yapip lengthe mi bakarim?
-	//reflective icin endpoint olmali mi?????
-	console.log("USER IS"+req.user.email);
-// const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 const userID = req.user.userid;
-
+const currentTime = new Date();
 		pool
 			.query("SELECT lastpractise_id FROM users WHERE id=$1", [
 				userID,
 			])
 			.then((result) => {
+				console.log( currentTime);
+				console.log( result.rows[0].lastpractise_time);
+				console.log(currentTime - result.rows[0].lastpractise_time);
+				if(currentTime-result.rows[0].lastpractise_time<0){
+                   res.send("Please visit later for new practise");
+				}
+				console.log(result.rows[0].lastpractise_id);
 				pool
 					.query("SELECT * FROM practises WHERE id=$1", [result.rows[0].lastpractise_id+1])
 					.then((result) => {
@@ -189,31 +189,30 @@ const userID = req.user.userid;
 router.post("/practise/completed", authenticateToken, (req, res) => {
 	const practise_id=req.body.practise_id;
 	const userID = req.user.userid;
+	const timestamp=new Date();
 	pool
-		.query("UPDATE users SET lastpractise_id=$1
-				.query("SELECT * FROM practises WHERE id=$1", [
-					result.rows[0].lastpractise_id + 1,
-				])
-				.then((result) => {
-					return res.json(result.rows);
+		.query("UPDATE users SET lastpractise_id=$1, lastpractise_time=$2 WHERE id=$3",[practise_id+1,timestamp,userID])
+		.then((result) => {
+					return res.send("database updated");
 				})
 				.catch((e) => res.send(JSON.stringify(e)));
-		})
-		.catch((e) => res.send(JSON.stringify(e)));
-});
+		});
 
 router.post("/reflects",authenticateToken, (req, res) => {
 	console.log("hello from reflect");
-		// const { answer,practise_id } = req.body;
-const answer="Bu kiz bizi batirdi.Bu gun icime atmadim yedimmmmm";
-const  practise_id=2;
+		const { answer,practice_id } = req.body;
+			const userID = req.user.userid;
+			console.log(req.body);
+
+// const answer="Bu kiz bizi batirdi.Bu gun icime atmadim yedimmmmm";
+// const  practise_id=2;
 	 //tokeni al....check et.......
 	 //answeri bodyden all----FRONT END bana answeri ve practise_id yi gonder gonder......userid yi biliyom answer var.....
-	const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
+	// const userID = "f8ed3880-a212-470c-83b5-edae3e5e0643";
 	pool
 		.query(
-			"INSERT INTO reflects VALUES (14, $1,$2,$3)",
-			[userID,answer,practise_id]
+			"INSERT INTO reflects (id,user_id,answer,practice_id) VALUES (DEFAULT,$1,$2,$3)",
+			[userID,answer,practice_id]
 		)
 		.then((result) => {
 			res.json({ "message": "reflective is inserted" });
