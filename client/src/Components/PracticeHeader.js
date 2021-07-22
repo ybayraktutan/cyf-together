@@ -3,7 +3,7 @@ import { Container, Col } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import clockIcon from "@iconify-icons/feather/clock";
 
-const PracticeHeader = () => {
+const PracticeHeader = ({ data }) => {
 	return (
 		<div id="practice-header">
 			<Container>
@@ -12,7 +12,7 @@ const PracticeHeader = () => {
 				</Col>
 				<div className="clock">
 					<Icon icon={clockIcon} />
-					<span> 5 mins</span>
+	<span> {data[0].time_expectation}</span>
 				</div>
 			</Container>
 		</div>
