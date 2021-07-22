@@ -8,17 +8,36 @@ import PracticeFooter from "../Components/PracticeFooter";
 import "../Style/Note.css";
 
 
-const Note = () => {
-
+const Note = ({ data }) => {
 	const history = useHistory();
-	const complete = () => history.push("/confirmation");
+	const [value, setValue] = useState(data[0].prompted_answer);
+	const complete = () => {
+		const token=localStorage.getItem("users");
+		const body = { answer:value, practice_id:data[0].id };
+		let result = fetch("http://localhost:3100/api/reflects", {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+					"Content-Type": "application/json",
+			Authorization:
+				`Bearer ${token}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+
+			});
+		history.push("/confirmation");
+
+	};
+
 
 	const linkStyle = {
 		width: "20rem",
 		borderRadius: "20px",
 	};
 
-	const [value, setValue] = useState("");
 
     return (
 			<div>
@@ -38,7 +57,7 @@ const Note = () => {
 						</Card.Body>
 						<Card.Body className="note-top2">
 							<div>
-								<p>Think about a grudge or annoyance that you can let go of</p>
+	<p>{data[0].practice}</p>
 							</div>
 						</Card.Body>
 						<Card.Body>

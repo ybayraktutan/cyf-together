@@ -7,7 +7,7 @@ import { DatabaseError } from "pg";
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
 const moment = require("moment-timezone");
-const errors = {};
+
 function handleEmail(email) {
 	const isValidEmail = EmailValidator.validate(email);
 	if (!isValidEmail) {
@@ -30,9 +30,7 @@ router.get("/", (_, res) => {
 router.post("/signin", (req, res) => {
 	//take email and password from front end
 	const { email, password } = req.body;
-	handleEmail(email);
-	console.log(email);
-	console.log(password);
+
 	//hash and salt the password
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
@@ -55,16 +53,16 @@ router.post("/signin", (req, res) => {
 						expiresIn: 3600,
 					});
 					// return res.json({ auth: "success" });
-					return res.json({ token: token });
+					return res.json({ token: token, auth: "success" });
 				} else {
-					return res.status(400).json({ auth: "error", errors });
+					return res.status(400).json({ auth: "error", errors: { email: "Check your email/password" } });
 				}
 			})
 			.catch((e) => res.send(JSON.stringify(e)));
 	} else {
 		return res
 			.status(400)
-			.json({ msg: "Please fill the email and password fields!!!" }, errors);
+			.json({ auth: "error", errors: { email: "Empty fields" } });
 	}
 });
 const errorMessages = {};
@@ -92,13 +90,13 @@ router.post("/register", (req, res) => {
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
-	if (!isValidPassword) {
-		errorMessages.password = "please enter a valid password";
-	} else if (!isValidEmail) {
-		errorMessages.email = "Please enter a valid email";
-	} else if (password !== passwordCheck) {
-		errorMessages.passwordCheck = "Password do not match";
-	}
+	// if (!isValidPassword) {
+	// 	errorMessages.password = "please enter a valid password";
+	// } else if (!isValidEmail) {
+	// 	errorMessages.email = "Please enter a valid email";
+	// } else if (password !== passwordCheck) {
+	// 	errorMessages.passwordCheck = "Password do not match";
+	// }
 	console.log(hashedPassword);
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
@@ -140,7 +138,7 @@ router.post("/register", (req, res) => {
 function authenticateToken(req, res, next) {
 	const authHeader = req.headers["authorization"];
 	const token = authHeader && authHeader.split(" ")[1];
-	console.log("TOKEN IS"+token)
+	console.log("TOKEN IS"+token);
 	if (token == null) {
 		return res.sendStatus(401);
 	}
@@ -154,7 +152,7 @@ function authenticateToken(req, res, next) {
 	});
 }
 router.get("/practise", authenticateToken, (req, res) => {
-	console.log("hello from practise")
+	console.log("hello from practise");
 	const userID = req.user.userid;
 	const currentTime = new Date();
 	pool

@@ -30,19 +30,19 @@ const LoginForm = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				console.log(data.token);
 				if (data.auth === "success") {
 					console.log(data);
 					history.push("/home");
 				} else if (data.auth === "error") {
 					console.log(data);
-					// setErrors((prevState) => {
-					// 	const state = {
-					// 		...prevState,
-					// 		email: data.errors.email,
-					// 	};
-					// 	return state;
-					// });
+					setErrors((prevState) => {
+						const state = {
+							...prevState,
+							email: data.errors.email,
+						};
+						return state;
+					});
 					history.push("/login");
 				} else if (data.msg) {
 					setErrors((prevState) => {
@@ -53,6 +53,8 @@ const LoginForm = () => {
 						return state;
 					});
 				}
+						localStorage.setItem("users", data.token);
+
 			});
 		localStorage.setItem("users", result);
 	}
@@ -87,7 +89,6 @@ const LoginForm = () => {
 							onChange={(e) => handleChange(e)}
 						/>
 						{/* {errors.password.length > 0 && <p>{errors.password}</p>} */}
-						{errors.emptyField.length > 0 && <p>{errors.emptyField}</p>}
 					</div>
 					<button
 						className="btn-login"
