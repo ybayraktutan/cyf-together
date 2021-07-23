@@ -12,7 +12,7 @@ const PracticeHeader = ({ data }) => {
 				</Col>
 				<div className="clock">
 					<Icon icon={clockIcon} />
-	<span> {data[0].time_expectation}</span>
+					<span> {data[0].time_expectation}</span>
 				</div>
 			</Container>
 		</div>

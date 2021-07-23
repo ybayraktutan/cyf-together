@@ -7,16 +7,17 @@ import PracticeHeader from "./PracticeHeader";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
-//import { Database } from "react-feather";
 
 
 const Practice = ({ data, setNoteDisplaying}) => {
 	const linkStyle = {
-		width: "20rem",
+		width: "22rem",
 		borderRadius: "20px",
 	};
 
 	console.log(data);
+    // const categories = data[0].category.split(",");
+
 	return (
 		<div id="practice">
 			<Container style={linkStyle} className="container">
@@ -37,18 +38,7 @@ const Practice = ({ data, setNoteDisplaying}) => {
 										text="light"
 										style={{ backgroundColor: "#F1F1FA" }}
 									>
-										Gratitude
-									</Badge>{" "}
-								</span>
-								&nbsp;
-								<span>
-									<Badge
-										pill
-										bg="secondary"
-										text="light"
-										style={{ backgroundColor: "#F1F1FA" }}
-									>
-										Connection
+										{data[0].category}
 									</Badge>{" "}
 								</span>
 							</div>
@@ -63,7 +53,7 @@ const Practice = ({ data, setNoteDisplaying}) => {
 								>
 									Description
 								</Card.Subtitle>
-								<p >{data[0].description}</p>
+								<p>{data[0].description}</p>
 							</div>
 							<div className="show-more">
 								<Link to="#" style={{ textDecoration: "none" }}>

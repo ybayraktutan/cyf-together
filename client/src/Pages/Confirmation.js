@@ -11,7 +11,7 @@ import "../Style/Confirmation.css";
 
 const Confirmation = () => {
 	const linkStyle = {
-		width: "20rem",
+		width: "22rem",
 		height: "32rem",
 		borderRadius: "20px",
 	};

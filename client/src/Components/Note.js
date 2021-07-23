@@ -34,7 +34,7 @@ const Note = ({ data }) => {
 
 
 	const linkStyle = {
-		width: "20rem",
+		width: "22rem",
 		borderRadius: "20px",
 	};
 
