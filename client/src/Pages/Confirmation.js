@@ -11,7 +11,7 @@ import "../Style/Confirmation.css";
 
 const Confirmation = () => {
 	const linkStyle = {
-		width: "20rem",
+		width: "22rem",
 		height: "32rem",
 		borderRadius: "20px",
 	};
@@ -28,7 +28,7 @@ const Confirmation = () => {
 					<Card.Body className="confirm-top">
 						<div className="top-contents">
 							<div>
-								<p style={{ fontSize: "11px" }}> Great job [Author]</p>
+								<p style={{ fontSize: "11px" }}> Great job </p>
 								<h5>Practice complete!</h5>
 							</div>
 							<div>

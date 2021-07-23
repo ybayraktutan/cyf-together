@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormlog";
 
+
 const LoginForm = () => {
 	const { handleChange, values } = useForm();
 	const [errors, setErrors] = useState({
@@ -77,7 +78,6 @@ const LoginForm = () => {
 							value={values.email}
 							onChange={(e) => handleChange(e)}
 						/>
-						{/* <p>{errors} error</p> */}
 					</div>
 					<div className="form-inputs">
 						<input
@@ -88,7 +88,6 @@ const LoginForm = () => {
 							value={values.password}
 							onChange={(e) => handleChange(e)}
 						/>
-						{/* {errors.password.length > 0 && <p>{errors.password}</p>} */}
 					</div>
 					<button
 						className="btn-login"

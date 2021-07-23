@@ -4,7 +4,7 @@ import logo from "../Utils/logo.png";
 
 const Header = () => {
 	return (
-		<div id="app-header">
+		<div id="header">
 			<div className="logo">
 				<img className="logo" src={logo} alt="logo" />
 			</div>

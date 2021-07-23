@@ -4,7 +4,7 @@ import { useHistory, Link, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify-icons/feather/chevron-left";
 import checkIcon from "@iconify-icons/feather/check";
-import PracticeFooter from "../Components/PracticeFooter";
+import PracticeFooter from "./PracticeFooter";
 import "../Style/Note.css";
 
 
@@ -34,7 +34,7 @@ const Note = ({ data }) => {
 
 
 	const linkStyle = {
-		width: "20rem",
+		width: "22rem",
 		borderRadius: "20px",
 	};
 
@@ -57,7 +57,7 @@ const Note = ({ data }) => {
 						</Card.Body>
 						<Card.Body className="note-top2">
 							<div>
-	<p>{data[0].practice}</p>
+								<p>{data[0].practice}</p>
 							</div>
 						</Card.Body>
 						<Card.Body>

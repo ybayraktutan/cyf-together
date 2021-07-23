@@ -125,7 +125,7 @@ const RegistrationForm = () => {
 						Already have an account?{" "}
 						<Link to="/login" style={linkStyle} onClick={login}>
 							{" "}
-							<button className="btn-login" type="submit">
+							<button className="btn-register" type="submit">
 								Sign In
 							</button>
 						</Link>
