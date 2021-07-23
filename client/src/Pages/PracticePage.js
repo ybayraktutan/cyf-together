@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React,{ useEffect,useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Container, Button, Card, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,39 +8,45 @@ import { Icon } from "@iconify/react";
 import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
 //import { Database } from "react-feather";
-import Note from "../Components/Note";
+import Note from "./Note";
 
 const PracticePage = () => {
-	const [data, setData] = useState([]);
-	const [noteDisplaying, setNoteDisplaying] = useState(true);
-	const token = localStorage.getItem("users");
-	console.log("local token  ", token);
-	console.log("");
+	const[data, setData] = useState([]);
+const [noteDisplaying,setNoteDisplaying]=useState(true);
+const token=localStorage.getItem("users");
+console.log("local token  ",token);
+console.log("");
 
 	useEffect(() => {
-		fetch("http://localhost:3100/api/practise", {
-			method: "GET",
-			// body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json",
-				// Accept: "application/json",
-				Authorization: `Bearer ${token}`,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data[0].title);
-				setData(data);
-			});
-	}, []);
+	fetch("http://localhost:3100/api/practise", {
+		method: "GET",
+		// body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json",
+			// Accept: "application/json",
+			Authorization:
+				`Bearer ${token}`
 
+
+,
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data[0].title);
+			setData(data);
+		});
+}, []);
+
+	const history = useHistory();
+	const note = () => history.push("/notes");
 
 	const linkStyle = {
 		width: "20rem",
 		borderRadius: "20px",
 	};
-	
-	console.log(data);
+  const test="Etesting all day baby";
+  console.log(data);
 	return (
 		<div id="practice">
 			{data[0] && (
