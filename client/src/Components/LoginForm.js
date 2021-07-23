@@ -77,7 +77,6 @@ const LoginForm = () => {
 							value={values.email}
 							onChange={(e) => handleChange(e)}
 						/>
-						{/* <p>{errors} error</p> */}
 					</div>
 					<div className="form-inputs">
 						<input
@@ -88,7 +87,6 @@ const LoginForm = () => {
 							value={values.password}
 							onChange={(e) => handleChange(e)}
 						/>
-						{/* {errors.password.length > 0 && <p>{errors.password}</p>} */}
 					</div>
 					<button
 						className="btn-login"

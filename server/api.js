@@ -8,19 +8,20 @@ const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
 const moment = require("moment-timezone");
 
-function handleEmail(email) {
-	const isValidEmail = EmailValidator.validate(email);
-	if (!isValidEmail) {
-		errors.email = "Invalid Email/Password";
-	}
-}
-function handlePassword(password) {
-	const schema = new passwordValidator();
-	const isValidPassword = schema.validate(password);
-	if (!isValidPassword) {
-		errors.password = "Please enter a valid password";
-	}
-}
+// const errors = {};
+// function handleEmail(email) {
+// 	const isValidEmail = EmailValidator.validate(email);
+// 	if (!isValidEmail) {
+// 		errors.email = "Invalid Email/Password";
+// 	}
+// }
+// function handlePassword(password) {
+// 	const schema = new passwordValidator();
+// 	const isValidPassword = schema.validate(password);
+// 	if (!isValidPassword) {
+// 		errors.password = "Please enter a valid password";
+// 	}
+// }
 const router = new Router();
 router.get("/", (_, res) => {
 	pool.query("SELECT * FROM users", (error, result) => {
@@ -55,14 +56,22 @@ router.post("/signin", (req, res) => {
 					// return res.json({ auth: "success" });
 					return res.json({ token: token, auth: "success" });
 				} else {
-					return res.status(400).json({ auth: "error", errors: { email: "Check your email/password" } });
+					return res.status(400).json({
+						auth: "error",
+						errors: {
+							email: "Incorrect Email and/or Password!",
+						},
+					});
 				}
 			})
 			.catch((e) => res.send(JSON.stringify(e)));
 	} else {
 		return res
 			.status(400)
-			.json({ auth: "error", errors: { email: "Empty fields" } });
+			.json({
+				auth: "error",
+				errors: { email: "Please enter Email and Password!" },
+			});
 	}
 });
 const errorMessages = {};
@@ -85,18 +94,18 @@ router.post("/register", (req, res) => {
 		.has()
 		.not()
 		.spaces();
-	handleEmail(email);
-	handlePassword(password);
+	// handleEmail(email);
+	// handlePassword(password);
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
-	// if (!isValidPassword) {
-	// 	errorMessages.password = "please enter a valid password";
-	// } else if (!isValidEmail) {
-	// 	errorMessages.email = "Please enter a valid email";
-	// } else if (password !== passwordCheck) {
-	// 	errorMessages.passwordCheck = "Password do not match";
-	// }
+	if (!isValidPassword) {
+		errorMessages.password = "Please enter a valid password";
+	} else if (!isValidEmail) {
+		errorMessages.email = "Please enter a valid email";
+	} else if (password !== passwordCheck) {
+		errorMessages.passwordCheck = "Password do not match";
+	}
 	console.log(hashedPassword);
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
@@ -134,6 +143,7 @@ router.post("/register", (req, res) => {
 		res.json({ msg: "Please enter the correct details!!!", errorMessages });
 	}
 });
+
 //verify token middleware
 function authenticateToken(req, res, next) {
 	const authHeader = req.headers["authorization"];

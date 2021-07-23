@@ -119,7 +119,6 @@ console.log("");
 										</div>
 									</div>
 									<div className="btn-practice">
-									
 										<Button
 											onClick={() => {
 												console.log("clicked button");
