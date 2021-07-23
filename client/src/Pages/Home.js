@@ -3,7 +3,7 @@ import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../Style/Home.css";
 import * as Icon from "react-feather";
-import Logout from "./Logout";
+import Logout from "../Components/Logout";
 
 const HomePage = () => {
 	const history = useHistory();
