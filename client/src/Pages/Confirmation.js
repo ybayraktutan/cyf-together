@@ -28,7 +28,7 @@ const Confirmation = () => {
 					<Card.Body className="confirm-top">
 						<div className="top-contents">
 							<div>
-								<p style={{ fontSize: "11px" }}> Great job [Author]</p>
+								<p style={{ fontSize: "11px" }}> Great job </p>
 								<h5>Practice complete!</h5>
 							</div>
 							<div>

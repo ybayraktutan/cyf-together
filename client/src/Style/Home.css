@@ -7,13 +7,17 @@
   margin: 0;
 }
 
-.container{
+.home-container{
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;  
-  width: 320px;  
+  width: 320px;
+  background-color: #6360FF;
+  color: white;
+  border-radius: 20px;
+    
 }
 
 .title {  

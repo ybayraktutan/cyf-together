@@ -9,7 +9,7 @@ const HomePage = () => {
 	const history = useHistory();
 	const newPage = () => history.push("/practice");
 	return (
-		<div className="container">
+		<div className="home-container">
 			<div className="title">
 				<h2>Caring starts with you</h2>
 				<p>

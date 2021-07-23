@@ -57,7 +57,7 @@ const Note = ({ data }) => {
 						</Card.Body>
 						<Card.Body className="note-top2">
 							<div>
-	<p>{data[0].practice}</p>
+								<p>{data[0].practice}</p>
 							</div>
 						</Card.Body>
 						<Card.Body>
