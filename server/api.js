@@ -8,20 +8,6 @@ const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
 const moment = require("moment-timezone");
 
-// const errors = {};
-// function handleEmail(email) {
-// 	const isValidEmail = EmailValidator.validate(email);
-// 	if (!isValidEmail) {
-// 		errors.email = "Invalid Email/Password";
-// 	}
-// }
-// function handlePassword(password) {
-// 	const schema = new passwordValidator();
-// 	const isValidPassword = schema.validate(password);
-// 	if (!isValidPassword) {
-// 		errors.password = "Please enter a valid password";
-// 	}
-// }
 const router = new Router();
 router.get("/", (_, res) => {
 	pool.query("SELECT * FROM users", (error, result) => {
@@ -66,12 +52,10 @@ router.post("/signin", (req, res) => {
 			})
 			.catch((e) => res.send(JSON.stringify(e)));
 	} else {
-		return res
-			.status(400)
-			.json({
-				auth: "error",
-				errors: { email: "Please enter Email and Password!" },
-			});
+		return res.status(400).json({
+			auth: "error",
+			errors: { email: "Please enter Email and Password!" },
+		});
 	}
 });
 const errorMessages = {};
@@ -94,8 +78,7 @@ router.post("/register", (req, res) => {
 		.has()
 		.not()
 		.spaces();
-	// handleEmail(email);
-	// handlePassword(password);
+
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
@@ -148,7 +131,7 @@ router.post("/register", (req, res) => {
 function authenticateToken(req, res, next) {
 	const authHeader = req.headers["authorization"];
 	const token = authHeader && authHeader.split(" ")[1];
-	console.log("TOKEN IS"+token);
+	console.log("TOKEN IS" + token);
 	if (token == null) {
 		return res.sendStatus(401);
 	}
@@ -186,26 +169,12 @@ router.get("/practise", authenticateToken, (req, res) => {
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
-//frontend should post practise_id of the completed practise
-router.post("/practise/completed", authenticateToken, (req, res) => {
-	console.log("hello from completed");
-	const practise_id = req.body.practise_id;
-	const userID = req.user.userid;
-	const timestamp = new Date();
-	pool
-		.query(
-			"UPDATE users SET lastpractise_id=$1, lastpractise_time=$2 WHERE id=$3",
-			[practise_id + 1, timestamp, userID]
-		)
-		.then((result) => {
-			return res.send("database updated");
-		})
-		.catch((e) => res.send(JSON.stringify(e)));
-});
+
 router.post("/reflects", authenticateToken, (req, res) => {
 	console.log("hello from reflect");
 	const { answer, practice_id } = req.body;
 	const userID = req.user.userid;
+	const timestamp = new Date();
 	console.log(req.body);
 	pool
 		.query(
@@ -213,7 +182,15 @@ router.post("/reflects", authenticateToken, (req, res) => {
 			[userID, answer, practice_id]
 		)
 		.then((result) => {
-			res.json({ message: "reflective is inserted" });
+			pool
+				.query(
+					"UPDATE users SET lastpractise_id=$1, lastpractise_time=$2 WHERE id=$3",
+					[practice_id, timestamp, userID]
+				)
+				.then((result) => {
+					return res.send("database updated");
+				})
+				.catch((e) => res.send(JSON.stringify(e)));
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
