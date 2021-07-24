@@ -4,6 +4,7 @@ import Register from "./Pages/Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import PracticePage from "./Pages/PracticePage";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Note from "./Components/Note";
 import Confirmation from "./Pages/Confirmation";
 import "./Style/App.css";
