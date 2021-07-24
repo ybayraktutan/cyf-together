@@ -9,15 +9,14 @@ import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
 
 
-const Practice = ({ data, setNoteDisplaying}) => {
+const Practice = ({ data, setNoteDisplaying }) => {
 	const linkStyle = {
-		width: "22rem",
+		width: "20rem",
 		borderRadius: "20px",
 	};
-
 	console.log(data);
-    // const categories = data[0].category.split(",");
-
+	const categories = data[0].category.split(",");
+	console.log(categories);
 	return (
 		<div id="practice">
 			<Container style={linkStyle} className="container">
@@ -30,17 +29,21 @@ const Practice = ({ data, setNoteDisplaying}) => {
 							</Card.Title>
 							<p>{data[0].subtitle}</p>
 							<div className="category">
-								<span>
-									<Badge
-										className="badge"
-										pill
-										bg="secondary"
-										text="light"
-										style={{ backgroundColor: "#F1F1FA" }}
-									>
-										{data[0].category}
-									</Badge>{" "}
-								</span>
+								{categories.map((category, index) => {
+                                    return (
+										<span key={index}>
+											&nbsp;
+											<Badge
+												className="badge"
+												pill
+												bg="secondary"
+												text="light"
+												style={{ backgroundColor: "#F1F1FA" }}
+											>
+												{category}
+											</Badge>{" "}
+										</span>
+									);})}
 							</div>
 						</div>
 					</Card.Body>
@@ -103,5 +106,4 @@ const Practice = ({ data, setNoteDisplaying}) => {
 		</div>
 	);
 };
-
 export default Practice;
