@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
@@ -14,7 +15,7 @@ const PracticeFooter = () => {
 	return (
 		<div id="practice-footer">
 			<div>
-				<NavLink to="/practice" style={linkStyle}>
+				<NavLink to="/home" style={linkStyle}>
 					<Icon icon={homeIcon} />
 					{/* <p>Today</p> */}
 				</NavLink>

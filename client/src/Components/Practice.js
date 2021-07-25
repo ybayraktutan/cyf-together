@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Button, Card, Badge } from "react-bootstrap";
@@ -7,7 +8,6 @@ import PracticeHeader from "./PracticeHeader";
 import { Icon } from "@iconify/react";
 import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
-
 
 const Practice = ({ data, setNoteDisplaying }) => {
 	const linkStyle = {
@@ -30,7 +30,7 @@ const Practice = ({ data, setNoteDisplaying }) => {
 							<p>{data[0].subtitle}</p>
 							<div className="category">
 								{categories.map((category, index) => {
-                                    return (
+									return (
 										<span key={index}>
 											&nbsp;
 											<Badge
@@ -43,7 +43,8 @@ const Practice = ({ data, setNoteDisplaying }) => {
 												{category}
 											</Badge>{" "}
 										</span>
-									);})}
+									);
+								})}
 							</div>
 						</div>
 					</Card.Body>
