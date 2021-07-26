@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Router } from "express";
 import { pool } from "./db";
 const uuid = require("uuid");

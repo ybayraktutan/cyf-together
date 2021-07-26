@@ -68,7 +68,7 @@ const LoginForm = () => {
 		<div id="login">
 			<>
 				<form onSubmit={handleSubmit} className="form" noValidate>
-					{errors.email.length > 0 && <p>{errors.email}</p>}
+					{errors.email && <p>{errors.email}</p>}
 					<div className="form-inputs">
 						<input
 							className="err-log"

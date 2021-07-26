@@ -7,7 +7,8 @@ import Logout from "../Components/Logout";
 
 const HomePage = () => {
 	const history = useHistory();
-	const newPage = () => history.push("/practice");
+	const practicePage = () => history.push("/practice");
+	const reflectPage = () => history.push("/reflect");
 	return (
 		<div className="home-container">
 			<div className="title">
@@ -20,12 +21,31 @@ const HomePage = () => {
 			</div>
 			<div className="container-option">
 				<div>
-					<div className="section-title">
-						<Icon.Key />
-						<h5>Reflect</h5>
-					</div>
 					<div>
-						<p>Discover yourself and what matters to you</p>
+						<Link
+							to="/practice"
+							onClick={practicePage}
+							style={({ textDecoration: "none" }, { color: "black" })}
+						>
+							<div className="section-title">
+								<Icon.Home />
+								<h5>Practice</h5>
+							</div>
+							<p>Build positive routines and habits</p>
+						</Link>
+					</div>
+					<div className="section-title">
+						<Link
+							to="/reflect"
+							onClick={reflectPage}
+							style={({ textDecoration: "none" }, { color: "black" })}
+						>
+							<div className="section-title">
+								<Icon.Key />
+								<h5>Reflect</h5>
+							</div>
+							<p>Discover yourself and what matters to you</p>
+						</Link>
 					</div>
 				</div>
 				<div>
@@ -36,23 +56,7 @@ const HomePage = () => {
 					<p>Bite-sized expert learning on relationships</p>
 				</div>
 				<div>
-					<Link
-						to="/practice"
-						onClick={newPage}
-						style={
-							({ textDecoration: "none" },
-							{ color: "black" })
-						}
-					>
-						<div className="section-title">
-							<Icon.Home />
-							<h5>Practice</h5>
-						</div>
-						<p>Build positive routines and habits</p>
-					</Link>
-				</div>
-				<div>
-					<button type="button" className="btn-continue" onClick={newPage}>
+					<button type="button" className="btn-continue" onClick={practicePage}>
 						Continue
 					</button>
 				</div>
