@@ -5,18 +5,17 @@
 .home-container{
   display: flex;
   flex-direction: column;
-  justify-self: center;
   align-items: center;  
   background-color: #6360FF;
   background-size: cover;
   color: white;
-  border-radius: 100px;
+  /* border-radius: 100px; */
   height: 100%;
   padding:0 ; 
 }
 
 .title {  
-  margin: 10vh 4vh 6vh 4vh;   
+  margin: 8vh 4vh 4vh 4vh;   
   height: 30%;     
 }
 
@@ -43,7 +42,7 @@
   background-color: #F1F1FA;
   color: black;
   width: 100%;
-  margin:0;
+  padding-top:3vh;
 }
 
 .option-title {
@@ -66,16 +65,17 @@
 }
 
 .btn-continue {
-  width: 100%;
-  margin-top: 7vh;
+  width: 80vw;
+  margin-top: 6vh;
   text-align: center;
 }
 
 .log-out{
   text-align: right;
-  margin: 2vh 0;
+  margin: 3vh;
   color:black;
-  font-size: 4vw; 
+  font-size: 3vw;
+  align-self: flex-end; 
 }
 
 #log-out{

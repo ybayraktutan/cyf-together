@@ -15,7 +15,11 @@ const HomePage = () => {
 	const history = useHistory();
 	const newPage = () => history.push("/practice");
 	return (
-		<Container fluid className="home-container">
+		<Container
+			fluid
+			className="home-container"
+			style={{ margin: "0", padding: "0" }}
+		>
 			<Card
 				className="title"
 				variant="default"
@@ -36,8 +40,7 @@ const HomePage = () => {
 				style={{
 					backgroundColor: "#F1F1FA",
 					border: "1px solid #F1F1FA",
-					borderRadius: "100px",
-					margin: "0",
+					borderRadius: "100px 100px 0 0",
 				}}
 			>
 				<Card.Body>
@@ -68,24 +71,24 @@ const HomePage = () => {
 					<Card.Text className="option-text" as="p">
 						Bite-sized expert learning on relationships
 					</Card.Text>
-					<Button
-						className="btn-continue"
-						variant="default"
-						style={{
-							color: "#FFF",
-							backgroundColor: "#7DC579",
-							padding: "40px",
-							fontSize:"4vw",
-							borderRadius:"20px",
-						}}
-						onClick={newPage}
-					>
-						Continue
-					</Button>
-					<div className="log-out">
-						<Logout nav={"Log Out"} />
-					</div>
 				</Card.Body>
+				<Button
+					className="btn-continue"
+					variant="default"
+					style={{
+						color: "#FFF",
+						backgroundColor: "#7DC579",
+						padding: "40px",
+						fontSize: "4vw",
+						borderRadius: "20px",
+					}}
+					onClick={newPage}
+				>
+					Continue
+				</Button>
+				<div className="log-out">
+					<Logout nav={"Log Out"} />
+				</div>
 			</Card>
 		</Container>
 	);
