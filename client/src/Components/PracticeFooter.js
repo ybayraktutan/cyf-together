@@ -15,7 +15,7 @@ const PracticeFooter = () => {
 	return (
 		<div id="practice-footer">
 			<div>
-				<NavLink to="/practice" style={linkStyle}>
+				<NavLink to="/home" style={linkStyle}>
 					<Icon icon={homeIcon} />
 					{/* <p>Today</p> */}
 				</NavLink>
