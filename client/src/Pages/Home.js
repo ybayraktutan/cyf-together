@@ -37,7 +37,7 @@ const HomePage = () => {
 					backgroundColor: "#F1F1FA",
 					border: "1px solid #F1F1FA",
 					borderRadius: "100px",
-					margin:"0",
+					margin: "0",
 				}}
 			>
 				<Card.Body>
@@ -47,7 +47,7 @@ const HomePage = () => {
 						style={({ textDecoration: "none" }, { color: "black" })}
 					>
 						<Card.Title className="option-title">
-							<Icon icon={homeIcon} />
+							<Icon icon={homeIcon} style={{ fontSize: "5vw" }} />
 							<h3>Practice</h3>
 						</Card.Title>
 						<Card.Text className="option-text" as="p">
@@ -55,14 +55,14 @@ const HomePage = () => {
 						</Card.Text>
 					</Link>
 					<Card.Title className="option-title">
-						<Icon icon={keyIcon} />
+						<Icon icon={keyIcon} style={{ fontSize: "5vw" }} />
 						<h3>Reflect</h3>
 					</Card.Title>
 					<Card.Text className="option-text" as="p">
 						Discover yourself and what matters to you
 					</Card.Text>
 					<Card.Title className="option-title">
-						<Icon icon={searchIcon} />
+						<Icon icon={searchIcon} style={{ fontSize: "5vw" }} />
 						<h3>Learn</h3>
 					</Card.Title>
 					<Card.Text className="option-text" as="p">
@@ -75,6 +75,8 @@ const HomePage = () => {
 							color: "#FFF",
 							backgroundColor: "#7DC579",
 							padding: "40px",
+							fontSize:"4vw",
+							borderRadius:"20px",
 						}}
 						onClick={newPage}
 					>
