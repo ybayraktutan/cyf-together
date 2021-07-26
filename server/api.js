@@ -151,36 +151,37 @@ router.get("/practise", authenticateToken, (req, res) => {
 		.query("SELECT lastpractise_id FROM users WHERE id=$1", [userID])
 		.then((result) => {
 			let user_last_practice_id = result.rows[0].lastpractise_id;
-				pool
+			pool
 				.query("SELECT id FROM practises ORDER BY id DESC LIMIT 1")
 				.then((result) => {
-						let last_practise_in_db = result.rows[0].id;
-						console.log("last pra"+user_last_practice_id);
-						console.log("last pra" + last_practise_in_db);
-
-						if (user_last_practice_id < last_practise_in_db) {
-							console.log("in if");
-							pool.query("SELECT * FROM practises WHERE id=$1", [
-							result.rows[0].lastpractise_id + 1])
+					let last_practise_in_db = result.rows[0].id;
+					if (user_last_practice_id < last_practise_in_db) {
+						pool
+							.query("SELECT * FROM practises WHERE id=$1", [
+								user_last_practice_id + 1,
+							])
 							.then((result) => {
-							return res.json(result.rows);
-				})
-				.catch((e) => res.send(JSON.stringify(e)));
-
-						}
-				return res.json(result.rows[0].id);
+								console.log("inside query");
+								return res.json(result.rows);
+							})
+							.catch((e) => res.send(JSON.stringify(e)));
+					} else {
+						pool
+							.query("SELECT * FROM practises WHERE id=1")
+							.then((result) => {
+								return res.json(result.rows);
+							})
+							.catch((e) => res.send(JSON.stringify(e)));
+					}
 				});
-			console.log(currentTime - result.rows[0].lastpractise_time);
+			// console.log(currentTime - result.rows[0].lastpractise_time);
 			// if (currentTime - result.rows[0].lastpractise_time < 0) {
 			// 	res.send("Please visit later for new practise");
 			// }
-			console.log(result.rows[0].lastpractise_id);
+		})
+		.catch((e) => res.send(JSON.stringify(e)));
 });
 
-
-
-
-});
 
 router.post("/reflects", authenticateToken, (req, res) => {
 	console.log("hello from reflect");
