@@ -21,7 +21,7 @@ const LoginForm = () => {
 		e.preventDefault();
 
 		const body = { email: values.email, password: values.password };
-		let result = fetch("http:/api/signin", {
+		let result = fetch("/api/signin", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
