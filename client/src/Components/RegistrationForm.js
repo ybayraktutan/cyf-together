@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormreg";
+import "../Style/Form.css";
 
 const RegistrationForm = () => {
 	const { handleChange, values } = useForm();
