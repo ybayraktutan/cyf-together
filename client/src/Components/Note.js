@@ -14,7 +14,7 @@ const Note = ({ data }) => {
 	const complete = () => {
 		const token=localStorage.getItem("users");
 		const body = { answer:value, practice_id:data[0].id };
-		let result = fetch("http://localhost:3100/api/reflects", {
+		let result = fetch("/api/reflects", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

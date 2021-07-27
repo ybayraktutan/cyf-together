@@ -12,7 +12,7 @@ const PracticePage = () => {
 	console.log("");
 
 	useEffect(() => {
-	fetch("http://localhost:3100/api/practise", {
+	fetch("/api/practise", {
 		method: "GET",
 		// body: JSON.stringify(body),
 		headers: {
