@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
 
+
 if (app.get("env") === "production") {
 	app.enable("trust proxy");
 	app.use(httpsOnly());

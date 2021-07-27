@@ -25,7 +25,7 @@ const RegistrationForm = () => {
 			password: values.password,
 			passwordCheck: values.password,
 		};
-		let result = fetch("http://localhost:3100/api/register", {
+		let result = fetch("/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

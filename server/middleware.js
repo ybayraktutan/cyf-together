@@ -2,28 +2,16 @@
 import helmet from "helmet";
 import path from "path";
 
-// export const configuredHelmet = () =>
-// 	helmet({
-// 		contentSecurityPolicy: {
-// 			directives: {
-// 				defaultSrc: ["'self'"],
-// 				objectSrc: ["'none'"],
-// 				scriptSrc: ["'self'", "unpkg.com", "polyfill.io"],
-// 				styleSrc: ["'self'", "https: 'unsafe-inline'"],
-// 				upgradeInsecureRequests: [],
-// 			},
-// 		},
-// 	});
-
 export const configuredHelmet = () =>
 	helmet({
 		contentSecurityPolicy: {
 			directives: {
 				defaultSrc: ["'self'"],
-				connectSrc: ["'self'", "https://cyf-feelz.herokuapp.com"],
 				objectSrc: ["'none'"],
 				scriptSrc: ["'self'", "unpkg.com", "polyfill.io"],
 				styleSrc: ["'self'", "https: 'unsafe-inline'"],
+				fontSrc: ["'self'", "https://fonts.gstatic.com"],
+				imgSrc: ["'self'", "https://github.com/missive/emoji-mart"],
 				upgradeInsecureRequests: [],
 			},
 		},

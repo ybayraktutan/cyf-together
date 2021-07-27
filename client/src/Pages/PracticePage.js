@@ -13,21 +13,22 @@ const PracticePage = () => {
 	console.log("");
 
 	useEffect(() => {
-		fetch("http://localhost:3100/api/practise", {
-			method: "GET",
-			// body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json",
-				// Accept: "application/json",
-				Authorization: `Bearer ${token}`,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data[0].title);
-				setData(data);
-			});
-	}, [token]);
+	fetch("/api/practise", {
+		method: "GET",
+		// body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json",
+			// Accept: "application/json",
+			Authorization:
+				`Bearer ${token}`,
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data[0].title);
+			setData(data);
+		});
+}, []);
 
 	return (
 		<div id="practice">
