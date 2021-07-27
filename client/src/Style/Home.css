@@ -84,10 +84,11 @@
     color:#413fb4;    
 }
 
-/* @media only screen and (min-width: 768px) {
+/* @media (min-width: 768px) {
   .home-container {
   height: 100%;
    
 }
+  }  */
 
-  } */
+  
