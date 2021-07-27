@@ -11,7 +11,7 @@ import "../Style/Practice.css";
 
 const Practice = ({ data, setNoteDisplaying }) => {
 	const linkStyle = {
-		width: "20rem",
+		// width: "20rem",
 		borderRadius: "20px",
 	};
 	console.log(data);
