@@ -28,7 +28,7 @@ const PracticePage = () => {
 			console.log(data[0].title);
 			setData(data);
 		});
-}, []);
+}, [token]);
 
 	return (
 		<div id="practice">
