@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Container, Col } from "react-bootstrap";
 import { Icon } from "@iconify/react";
@@ -12,7 +13,7 @@ const PracticeHeader = ({ data }) => {
 				</Col>
 				<div className="clock">
 					<Icon icon={clockIcon} />
-					<span> {data[0].time_expectation}</span>
+					<span> {`${data[0].time_expectation} mins`}</span>
 				</div>
 			</Container>
 		</div>
