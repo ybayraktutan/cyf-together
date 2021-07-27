@@ -78,7 +78,7 @@ const HomePage = () => {
 					style={{
 						color: "#FFF",
 						backgroundColor: "#7DC579",
-						padding: "40px",
+						padding: "30px",
 						fontSize: "4vw",
 						borderRadius: "20px",
 					}}
