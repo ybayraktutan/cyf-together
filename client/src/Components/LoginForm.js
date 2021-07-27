@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormlog";
 import { Form, Button } from "react-bootstrap";
-// import "../Style/Form.css";
+import "../Style/Form.css";
 
 
 const LoginForm = () => {

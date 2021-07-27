@@ -91,3 +91,10 @@
   margin:2vh 0;
   font-size: 2vw;
 }
+
+
+@media (min-width: 992px) {
+  .form-container {
+  height: 100%;   
+  }
+} 
