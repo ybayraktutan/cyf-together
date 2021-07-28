@@ -11,7 +11,7 @@ export const configuredHelmet = () =>
 				scriptSrc: ["'self'", "unpkg.com", "polyfill.io"],
 				styleSrc: ["'self'", "https: 'unsafe-inline'"],
 				fontSrc: ["'self'", "https://fonts.gstatic.com"],
-				imgSrc: ["'self'", "https://github.com/missive/emoji-mart"],
+				imgSrc: ["'self'", "https://missive.github.io/emoji-mart"],
 				upgradeInsecureRequests: [],
 			},
 		},
