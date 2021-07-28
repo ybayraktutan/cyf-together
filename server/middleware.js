@@ -11,7 +11,10 @@ export const configuredHelmet = () =>
 				scriptSrc: ["'self'", "unpkg.com", "polyfill.io"],
 				styleSrc: ["'self'", "https: 'unsafe-inline'"],
 				fontSrc: ["'self'", "https://fonts.gstatic.com"],
-				imgSrc: ["'self'", "https://missive.github.io/emoji-mart"],
+				imgSrc: [
+					"'self'",
+					"https://unpkg.com/emoji-datasource-apple@5.0.1/img/apple/sheets-256/64.png",
+				],
 				upgradeInsecureRequests: [],
 			},
 		},
