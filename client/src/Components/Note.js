@@ -27,6 +27,7 @@ const Note = ({ data }) => {
 				console.log(data);
 			});
 		history.push("/confirmation");
+		console.log(result);
 	};
 
 	const linkStyle = {
