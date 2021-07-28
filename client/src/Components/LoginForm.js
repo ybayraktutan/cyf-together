@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormlog";
+import { Form, Button } from "react-bootstrap";
+import "../Style/Form.css";
 
 
 const LoginForm = () => {
@@ -59,56 +61,82 @@ const LoginForm = () => {
 			});
 		localStorage.setItem("users", result);
 	}
-
-	const linkStyle = {
-		color: "#FF8181",
-	};
+const linkStyleInput = {
+	width: "85vw",
+	height: "7vh",
+	borderRadius: "30px",
+	fontSize: "3vw",
+	padding: "2vw 4vw",
+	margin:"2vh 0",
+};
 
 	return (
 		<div id="login">
-			<>
-				<form onSubmit={handleSubmit} className="form" noValidate>
-					{errors.email.length > 0 && <p>{errors.email}</p>}
-					<div className="form-inputs">
-						<input
-							className="err-log"
-							type="text"
-							id="email"
-							placeholder="Email"
-							value={values.email}
-							onChange={(e) => handleChange(e)}
-						/>
-					</div>
-					<div className="form-inputs">
-						<input
-							className="err-log"
-							type="password"
-							id="password"
-							placeholder="Password"
-							value={values.password}
-							onChange={(e) => handleChange(e)}
-						/>
-					</div>
-					<button
+			<Form onSubmit={handleSubmit}>
+				{errors.email.length > 0 && <p>{errors.email}</p>}
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="email"
+						id="email"
+						placeholder="Email"
+						style={linkStyleInput}
+						value={values.email}
+						onChange={(e) => handleChange(e)}
+					/>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="password"
+						id="password"
+						placeholder="Password"
+						style={linkStyleInput}
+						value={values.password}
+						onChange={(e) => handleChange(e)}
+					/>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<Button
 						className="btn-login"
 						type="submit"
-						// onClick={home}
+						variant="default"
+						style={{
+							color: "#FFF",
+							backgroundColor: "#6360FF",
+							padding: "30px",
+							fontSize: "3vw",
+							borderRadius: "20px",
+							alignItems: "center",
+						}}
 					>
-						Sign In
-					</button>
-					<span className="title-account">
-						<h5 className="account">
-							Don&apos;t have an account?{" "}
-							<Link to="/register" style={linkStyle} onClick={register}>
-								{" "}
-								<button className="btn-register" type="submit">
-									Register
-								</button>
-							</Link>
-						</h5>
-					</span>
-				</form>
-			</>
+						Sign in
+					</Button>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<h5>Don&apos;t have an account? </h5>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<Link to="/register" onClick={register}>
+						{" "}
+						<Button
+							className="btn-register"
+							variant="default"
+							type="submit"
+							style={{
+								color: "#FFF",
+								backgroundColor: "#FF8181",
+								padding: "30px",
+								fontSize: "3vw",
+								borderRadius: "20px",
+							}}
+						>
+							Register
+						</Button>
+					</Link>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<h6>T&C and Privacy Policy</h6>
+				</Form.Group>
+			</Form>
 		</div>
 	);
 };

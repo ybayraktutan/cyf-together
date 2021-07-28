@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormreg";
+import "../Style/Form.css";
+import { Form, Button } from "react-bootstrap";
 
 const RegistrationForm = () => {
 	const { handleChange, values } = useForm();
@@ -65,11 +67,114 @@ const RegistrationForm = () => {
 		localStorage.setItem("users", result);
 	}
 
-	const linkStyle = {
-		color: "#FF8181",
+	const linkStyleInput = {
+		width: "85vw",
+		height: "7vh",
+		borderRadius: "30px",
+		fontSize: "3vw",
+		padding: "2vw 4vw",
+		margin: "0",
 	};
 
 	return (
+		<div id="login">
+			<Form onSubmit={handleSubmit}>
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="text"
+						id="firstname"
+						placeholder="Firstname"
+						style={linkStyleInput}
+						value={values.firstname}
+						onChange={(e) => handleChange(e)}
+					/>
+					{/* {errors.firstname && <p>{errors.firstname}</p>} */}
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="text"
+						id="email"
+						placeholder="Email"
+						style={linkStyleInput}
+						value={values.email}
+						onChange={(e) => handleChange(e)}
+					/>
+				</Form.Group>
+				{errors.email.length > 0 && <p>{errors.email}</p>}
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="password"
+						id="password"
+						placeholder="Password"
+						style={linkStyleInput}
+						value={values.password}
+						onChange={(e) => handleChange(e)}
+					/>
+				</Form.Group>
+				{/* {errors.passwordCheck && <p>{errors.passwordCheck}</p>} */}
+				{errors.password.length > 0 && <p>{errors.password}</p>}
+				<Form.Group className="mb-3">
+					<Form.Control
+						type="password"
+						id="passwordCheck"
+						placeholder="Confirm password"
+						style={linkStyleInput}
+						value={values.passwordCheck}
+						onChange={(e) => handleChange(e)}
+					/>
+				</Form.Group>
+				{errors.emptyField.length < 1 && <p>{errors.emptyField}</p>}
+				<Form.Group className="mb-3">
+					<Button
+						className="btn-login"
+						type="submit"
+						variant="default"
+						style={{
+							color: "#FFF",
+							backgroundColor: "#6360FF",
+							padding: "30px",
+							fontSize: "3vw",
+							borderRadius: "20px",
+							alignItems: "center",
+						}}
+					>
+						Register
+					</Button>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<h5>Already have an account?</h5>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<Link to="/login" onClick={login}>
+						{" "}
+						<Button
+							className="btn-register"
+							variant="default"
+							type="submit"
+							style={{
+								color: "#FFF",
+								backgroundColor: "#FF8181",
+								padding: "30px",
+								fontSize: "3vw",
+								borderRadius: "20px",
+							}}
+						>
+							Sign in
+						</Button>
+					</Link>
+				</Form.Group>
+				<Form.Group className="mb-3">
+					<h6>T&C and Privacy Policy</h6>
+				</Form.Group>
+			</Form>
+		</div>
+	);
+};
+
+export default RegistrationForm;
+
+/*
+return (
 		<div id="login">
 			<form onSubmit={handleSubmit} className="form" noValidate>
 				<div className="form-inputs">
@@ -81,7 +186,7 @@ const RegistrationForm = () => {
 						value={values.firstname}
 						onChange={(e) => handleChange(e)}
 					/>
-					{/* {errors.firstname && <p>{errors.firstname}</p>} */}
+					{/* {errors.firstname && <p>{errors.firstname}</p>} }
 				</div>
 				<div className="form-inputs">
 					<input
@@ -114,7 +219,7 @@ const RegistrationForm = () => {
 						value={values.passwordCheck}
 						onChange={(e) => handleChange(e)}
 					/>
-					{/* {errors.passwordCheck && <p>{errors.passwordCheck}</p>} */}
+					{/* {errors.passwordCheck && <p>{errors.passwordCheck}</p>} }
 				</div>
 				{errors.emptyField.length < 1 && <p>{errors.emptyField}</p>}
 				<button className="btn-login" type="submit">
@@ -134,6 +239,4 @@ const RegistrationForm = () => {
 			</form>
 		</div>
 	);
-};
-
-export default RegistrationForm;
+*/

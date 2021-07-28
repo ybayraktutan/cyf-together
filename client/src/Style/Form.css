@@ -1,92 +1,100 @@
 
-
-#header{
-  margin-top: 30px;
+.form-container {
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  text-align: center;  
-}
-.form-container {
+  align-items: center;  
   background-color: #6360FF;
+  background-size: cover;
   color: white;
-  border-radius: 20px;
+  /* border-radius: 100px; */
+  height: 100vh;
+  padding:0 ; 
 }
 
-.logo {
-  background-repeat: no-repeat;
-  height: 7.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  
+.header{
+  padding: 6vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 45%;  
 }
+
+.logo {   
+  margin-left: auto;
+  margin-right: auto;    
+}
+.header h1{
+  text-align: center;
+  font-size: 8vw;
+  font-weight: bold;
+  margin-bottom:2vh; 
+ }
+
+.header p {  
+  font-size: 3vw;
+}
+
 
 #login{
-  height: 500px;
-  width: 320px;
+  height: 65%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-top: 3vh;
-  border: 1px solid #F1F1FA;
+  justify-content: space-around;
+  align-items: center;
   background-color: #F1F1FA;
-  border-radius: 20px 20px 0 0;
-  padding: 20px;
-}
+  border-radius: 50px 50px 0 0;
+  padding: 4vw 0;
+} 
 
-#login input{
-  background-color: white;
-}
-
-input{
-  width: 100%;
-  border: 2px solid#F1F1FA ;
-  padding: 17px;
-  margin: 3px 0;  
-  border-radius: 7px;
-  box-shadow: none;
-}
-
-.head-img {
-  width: 25%;
-  height: 40%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -190px;
-  transform: translate(-50%, -50%);
-}
-
-.form-content-right {
-  border-radius: 0 10px 10px 0;
-  position: relative;
-}
-
-.form-img-2 {
-  width: 60%;
-  height: 60%;
-  margin-top: -50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form-success {
-  display: flex;
-  justify-content: center;
-  padding-top: 100px;
+#login p{
+  color: red;
+  font-size: 2.5vw;
   text-align: center;
-  font-size: 24px;
-  margin-top: 80px;
-  color: black;
-  font-size: 30px;
 }
 
-.account{
+.btn-login {
+  width: 100%;
+  margin: 1vw 0;
+  background-color:#6360FF;
+  text-align: center;
+  padding: 2vw;
+  border-radius: 7px;
+  color: white;
+  font-size: 4vw;
+ 
+} 
+
+
+.btn-register {
+  width: 100%;
+  margin: 1vw 0;
+  background-color:#FF8181;
+  text-align: center;
+  padding: 2vw;
+  border-radius: 7px;
+  color: white;
+  font-size: 4vw;
+}
+
+#login h5 {
   color:black;
   text-align: center;
-  margin:20px 0;
-  font-size: 12px;
+  margin: 0;
+  font-size: 2vw;
 }
+
+#login h6 {
+  color:black;
+  text-align: center;
+  margin:2vh 0;
+  font-size: 2vw;
+}
+
+
+@media (min-width: 992px) {
+  .form-container {
+  height: 100%;   
+  }
+} 

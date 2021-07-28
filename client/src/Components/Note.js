@@ -70,7 +70,7 @@ const Note = ({ data }) => {
 									size="sm"
 									value={value}
 									onChange={(e) => setValue(e.target.value)}
-									style={({ fontSize: "8px" }, { height: "250px" })}
+									style={({ fontSize: "8px", height: "250px" })}
 								/>
 							</Form.Group>
 						</Card.Body>
