@@ -1,5 +1,5 @@
 /*eslint linebreak-style: ["error", "windows"]*/
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Button, Card, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,10 +10,6 @@ import userIcon from "@iconify-icons/feather/user";
 import "../Style/Practice.css";
 
 const Practice = ({ data, setPracticeDisplaying }) => {
-	// const linkStyle = {
-	// 	width: "20rem",
-	// 	borderRadius: "20px",
-	// };
 
 	const categories = data[0].category.split(",");
 
