@@ -146,7 +146,6 @@ function authenticateToken(req, res, next) {
 }
 router.get("/practise", authenticateToken, (req, res) => {
 	const userID = req.user.userid;
-	const currentTime = new Date();
 	pool
 		.query("SELECT lastpractise_id FROM users WHERE id=$1", [userID])
 		.then((result) => {
@@ -174,10 +173,6 @@ router.get("/practise", authenticateToken, (req, res) => {
 							.catch((e) => res.send(JSON.stringify(e)));
 					}
 				});
-			// console.log(currentTime - result.rows[0].lastpractise_time);
-			// if (currentTime - result.rows[0].lastpractise_time < 0) {
-			// 	res.send("Please visit later for new practise");
-			// }
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
@@ -191,8 +186,8 @@ router.post("/reflects", authenticateToken, (req, res) => {
 	console.log(req.body);
 	pool
 		.query(
-			"INSERT INTO reflects (user_id,answer,practice_id) VALUES ($1,$2,$3)",
-			[userID, answer, practice_id]
+			"INSERT INTO reflects (user_id,answer,practice_id,completed_time) VALUES ($1,$2,$3,$4)",
+			[userID, answer, practice_id,timestamp]
 		)
 		.then((result) => {
 			pool
@@ -205,6 +200,19 @@ router.post("/reflects", authenticateToken, (req, res) => {
 				})
 				.catch((e) => res.send(JSON.stringify(e)));
 		})
+		.catch((e) => res.send(JSON.stringify(e)));
+});
+
+router.get("/reflects/display", authenticateToken, (req, res) => {
+	const userID = req.user.userid;
+	pool
+		.query(
+			"SELECT reflects.id,practises.title,reflects.answer,reflects.completed_time FROM (users INNER JOIN reflects ON users.id=reflects.user_id) INNER JOIN  practises ON reflects.practice_id=practises.id WHERE users.id=$1",
+			[userID]
+		)
+		.then((result) => {
+			return res.json(result.rows);
+				})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
 
