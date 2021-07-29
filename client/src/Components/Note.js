@@ -51,34 +51,6 @@ const Note = ({ data }) => {
 							</div>
 						</div>
 					</Card.Body>
-					<Card.Body>
-						<Form.Group
-							className="mb-3"
-							controlId="exampleForm.ControlTextarea1"
-						>
-							<Form.Control
-								as="textarea"
-								size="sm"
-								value={value}
-								onChange={(e) => setValue(e.target.value)}
-								style={{ fontSize: "8px", height: "250px" }}
-							/>
-						</Form.Group>
-					</Card.Body>
-					<Card.Body>
-						<div className="btn-note">
-							<Link to="/confirmation" onClick={complete}>
-								<Button
-									variant="success"
-									size="sm"
-									style={{ backgroundColor: "#7DC579" }}
-								>
-									<Icon icon={checkIcon} />
-									Done
-								</Button>{" "}
-							</Link>
-						</div>
-					</Card.Body>
 					<Card.Body className="note-top2">
 						<div>
 							<p>{data[0].practice}</p>

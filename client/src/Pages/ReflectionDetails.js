@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import "../Style/Reflections.css";
 import { Card, Container } from "react-bootstrap";
@@ -6,81 +6,38 @@ import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify-icons/feather/chevron-left";
 import ReflectFooter from "../Components/ReflectFooter";
 
-
-const notes = [
-	{
-		id: "1",
-		title: "This is me",
-		answer: "anser to all questions",
-		date: "Monday, July 26",
-	},
-	{
-		id: "2",
-		title:
-			"Think of a time you’ve had difficulty expressing yourself and note down the details",
-		answer: "Not an anser to all questions",
-		date: "Tuesday, July 27",
-	},
-	{
-		id: "3",
-		title: "Identify who you don’t communicate well with and why",
-		answer: "Does that answer your questions",
-		date: "Wednesday, July 28",
-	},
-	{
-		id: "4",
-		title: "Who do you communicate well with?",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-	{
-		id: "5",
-		title: "Be grateful about your relationships",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-	{
-		id: "46",
-		title: "When have you struggled to express yourself?",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-	{
-		id: "8",
-		title: "Who do you communicate well with?",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-	{
-		id: "9",
-		title: "Be grateful about your relationships",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-	{
-		id: "7",
-		title: "When have you struggled to express yourself?",
-		answer:
-			"Daily exercises to develope your relationships, using cognitivebehavioural therapy non violent communication, behavioural science, mindfulness and breathwork",
-		date: "Thursday, July 29",
-	},
-];
-
 const ReflectionDetails = () => {
-    const params = useParams();
+	const [data, setData] = useState([]);
+	const token = localStorage.getItem("users");
+	console.log("local token  ", token);
 
-	const note = notes.find((note) => note.id === params.practiceId);
+	useEffect(() => {
+		fetch("http://localhost:3100/api/reflects/display", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data[0].answer);
+				setData(data);
+			});
+	}, [token]);
 
 	const linkStyle = {
 		width: "25vw",
 		height: "100vh",
 		borderRadius: "20px",
 	};
+
+	const params = useParams();
+	const notes = data.find((note) => note.id === params.practiceId);
+	console.log(data);
+	console.log(notes);
+
+	console.log(data.title);
 
 	return (
 		<div>
@@ -103,10 +60,9 @@ const ReflectionDetails = () => {
 						</div>
 					</Card.Header>
 					<Card.Body className="note" >
-						<h4>{note.title}</h4>
-						<p>{note.date}</p>
+						<h4>{data.title}</h4>
 						<div>
-							<p>{note.answer}</p>
+							<p>{data.answer}</p>
 						</div>
 						<p>{params.practiceId}</p>
 					</Card.Body>

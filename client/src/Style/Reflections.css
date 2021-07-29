@@ -29,6 +29,8 @@
     display: flex;
     justify-content: center;
     padding:20px;
+    height: 100vh;
+  padding:0 ; 
 }
 
 .badge-ref{
@@ -38,7 +40,7 @@
     font-weight: lighter;
     text-align: left;
     white-space: pre-wrap;
-    width: 18vw;
+    width: 20vw;
 }
 
 

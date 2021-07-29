@@ -2,8 +2,18 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../Style/Reflections.css";
+import moment from "moment";
+//import _ from "lodash";
 
 const ReflectionItem = (props) => {
+
+	let dated = moment(props.date).format("dddd, MMMM D");
+
+	// let orderedByMonths = _.groupBy(props, function (element) {
+	// 	return element.dated.substring(0, 7);
+	// });
+	// 	console.log(orderedByMonths);
+
 	return (
 		<div>
 			<Link className="btn" to={`/reflects/${props.id}`}>
@@ -16,12 +26,14 @@ const ReflectionItem = (props) => {
 						style={{ backgroundColor: "white" }}
 					>
 						<div>
-							<p style={({ fontSize: "13px" }, { fontWeight: "bold" })}>
+							<p style={({ fontSize: "14px" }, { fontWeight: "bold" })}>
 								{props.title}
 							</p>
 						</div>
 						<div>
-							<p>{props.date}</p>
+							<p style={{ color: "91919F" }}>
+								{dated}
+							</p>
 						</div>
 					</Badge>
 				</li>
