@@ -13,7 +13,8 @@ import { Container, Card, Button } from "react-bootstrap";
 
 const HomePage = () => {
 	const history = useHistory();
-	const newPage = () => history.push("/practice");
+	const practicePage = () => history.push("/practice");
+	const reflectPage = () => history.push("/reflects");
 	return (
 		<Container
 			fluid
@@ -46,7 +47,7 @@ const HomePage = () => {
 				<Card.Body>
 					<Link
 						to="/practice"
-						onClick={newPage}
+						onClick={practicePage}
 						style={({ textDecoration: "none" }, { color: "black" })}
 					>
 						<Card.Title className="option-title">
@@ -57,13 +58,19 @@ const HomePage = () => {
 							Build positive routines and habits
 						</Card.Text>
 					</Link>
-					<Card.Title className="option-title">
-						<Icon icon={keyIcon} style={{ fontSize: "5vw" }} />
-						<h3>Reflect</h3>
-					</Card.Title>
-					<Card.Text className="option-text" as="p">
-						Discover yourself and what matters to you
-					</Card.Text>
+					<Link
+						to="/reflects"
+						onClick={reflectPage}
+						style={({ textDecoration: "none" }, { color: "black" })}
+					>
+						<Card.Title className="option-title">
+							<Icon icon={keyIcon} style={{ fontSize: "5vw" }} />
+							<h3>Reflect</h3>
+						</Card.Title>
+						<Card.Text className="option-text" as="p">
+							Discover yourself and what matters to you
+						</Card.Text>
+					</Link>
 					<Card.Title className="option-title">
 						<Icon icon={searchIcon} style={{ fontSize: "5vw" }} />
 						<h3>Learn</h3>
@@ -82,7 +89,7 @@ const HomePage = () => {
 						fontSize: "4vw",
 						borderRadius: "20px",
 					}}
-					onClick={newPage}
+					onClick={practicePage}
 				>
 					Continue
 				</Button>
