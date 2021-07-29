@@ -5,6 +5,7 @@ import { Card, Container } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import chevronLeft from "@iconify-icons/feather/chevron-left";
 import ReflectFooter from "../Components/ReflectFooter";
+import moment from "moment";
 
 const ReflectionDetails = () => {
 	const [data, setData] = useState([]);
@@ -33,11 +34,19 @@ const ReflectionDetails = () => {
 	};
 
 	const params = useParams();
-	const notes = data.find((note) => note.id === params.practiceId);
-	console.log(data);
-	console.log(notes);
+	const id = parseInt(params.practiceId);
+	const note = data.find((note) => note.id === id);
 
-	console.log(data.title);
+	const body = note && (
+		<>
+			<h4>{note.title}</h4>
+			<p>{moment(note.completed_time).format("dddd, MMMM D")}</p>
+			<div>
+				<p>{note.answer}</p>
+			</div>
+			<p>{`The params id is ${params.practiceId}`}</p>
+		</>
+	);
 
 	return (
 		<div>
@@ -59,13 +68,7 @@ const ReflectionDetails = () => {
 							</div>
 						</div>
 					</Card.Header>
-					<Card.Body className="note" >
-						<h4>{data.title}</h4>
-						<div>
-							<p>{data.answer}</p>
-						</div>
-						<p>{params.practiceId}</p>
-					</Card.Body>
+					<Card.Body className="list-scroll">{body}</Card.Body>
 					<Card.Footer>
 						<ReflectFooter />
 					</Card.Footer>

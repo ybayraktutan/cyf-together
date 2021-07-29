@@ -14,7 +14,9 @@ const ReflectFooter = () => {
 	return (
 		<div id="reflect-footer">
 			<div>
-				<Icon icon={homeIcon} />
+				<NavLink to="/home">
+					<Icon icon={homeIcon} />
+				</NavLink>
 			</div>
 			<span>
 				<Icon icon={searchIcon} />

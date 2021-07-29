@@ -5,6 +5,7 @@ import "../Style/Reflections.css";
 import ReflectFooter from "./ReflectFooter";
 import { Card, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
 
 const ReflectionList = ({ data }) => {
 	const linkStyle = {
@@ -13,12 +14,59 @@ const ReflectionList = ({ data }) => {
 		borderRadius: "20px",
 	};
 
-	console.log("checking", data);
-
 	const titleStyle = {
 		backgroundColor: "#F1F1FA",
 		paddingTop: "10px",
 	};
+
+	const grouped = {};
+
+	data.forEach((note) => {
+		const key = note.completed_time && note.completed_time.slice(0, 7);
+
+		const value = grouped[key];
+
+		if (value) {
+			value.push(note);
+		} else {
+			grouped[key] = [note];
+		}
+	});
+
+	const keys = Object.keys(grouped);
+	const sorted = keys.sort((a, b) => {
+		if (a > b) {
+			return -1;
+		}
+
+		return 1;
+	});
+
+	const sections = sorted.map((key) => {
+		const notes = grouped[key];
+		const time = moment(key);
+		const formatted = time.format("MMMM YYYY");
+		const items = notes.map((practice) => {
+			return (
+				<ReflectionItem
+					key={practice.id}
+					id={practice.id}
+					title={practice.title}
+					answer={practice.answer}
+					date={practice.completed_time}
+				/>
+			);
+		});
+
+		return (
+			<div key={time}>
+				<p style={{ fontSize: "12px" }}>
+					<b>{formatted}</b>
+				</p>
+				<ul className="list">{items}</ul>
+			</div>
+		);
+	});
 
 	return (
 		<div>
@@ -44,19 +92,7 @@ const ReflectionList = ({ data }) => {
 						className="list-scroll"
 						style={{ backgroundColor: "#F1F1FA" }}
 					>
-						<ul className="list">
-							{data.map((practice) => {
-								return (
-									<ReflectionItem
-										key={practice.id}
-										id={practice.id}
-										title={practice.title}
-										answer={practice.answer}
-										date={practice.completed_time}
-									/>
-								);
-							})}
-						</ul>
+						{sections}
 					</Card.Body>
 					<Card.Footer>
 						<ReflectFooter />

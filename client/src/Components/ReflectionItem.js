@@ -9,11 +9,6 @@ const ReflectionItem = (props) => {
 
 	let dated = moment(props.date).format("dddd, MMMM D");
 
-	// let orderedByMonths = _.groupBy(props, function (element) {
-	// 	return element.dated.substring(0, 7);
-	// });
-	// 	console.log(orderedByMonths);
-
 	return (
 		<div>
 			<Link className="btn" to={`/reflects/${props.id}`}>
