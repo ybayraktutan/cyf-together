@@ -123,3 +123,12 @@
   text-align: center;
   width: 100%;
 }
+
+@media (min-width: 992px) {
+  .practice-main-container {
+  height: 100%; 
+  }
+  .practice-container {
+  height: 100%; 
+}
+} 

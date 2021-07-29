@@ -42,12 +42,12 @@ const Note = ({ data }) => {
 				style={{ backgroundColor: "#6360FF", border: "none" }}
 			>
 				<Card.Body className="note-header">
-					<Link to="/practice">
+					<NavLink to="/practice">
 						<Icon
 							icon={chevronLeft}
 							style={{ color: "white", fontSize: "4vw" }}
 						/>
-					</Link>
+					</NavLink>
 					<span style={{ textAlign: "justify" }}>
 						Today&apos;s Practice
 					</span>
