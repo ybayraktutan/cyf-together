@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormreg";
 import "../Style/Form.css";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 
 const RegistrationForm = () => {
 	const { handleChange, values } = useForm();
@@ -163,8 +163,13 @@ const RegistrationForm = () => {
 						</Button>
 					</Link>
 				</Form.Group>
-				<Form.Group className="mb-3">
-					<h6>T&C and Privacy Policy</h6>
+				<Form.Group className="mb-3 login-a">
+					<Card.Link
+						style={{ color: "black" }}
+						href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit"
+					>
+						T&C and Privacy Policy
+					</Card.Link>
 				</Form.Group>
 			</Form>
 		</div>
