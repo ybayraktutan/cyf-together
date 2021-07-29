@@ -40,7 +40,7 @@ const HomePage = () => {
 				style={{
 					backgroundColor: "#F1F1FA",
 					border: "1px solid #F1F1FA",
-					borderRadius: "100px 100px 0 0",
+					borderRadius: "50px 50px 0 0",
 				}}
 			>
 				<Card.Body>

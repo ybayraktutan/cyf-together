@@ -1,46 +1,51 @@
-import React,{ useEffect,useState } from "react";
+/*eslint linebreak-style: ["error", "windows"]*/
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Style/Practice.css";
 import Practice from "../Components/Practice";
 import Note from "../Components/Note";
+import { Container } from "react-bootstrap";
 
 const PracticePage = () => {
-	const[data, setData] = useState([]);
-	const [noteDisplaying,setNoteDisplaying]=useState(true);
-	const token=localStorage.getItem("users");
-	console.log("local token  ",token);
+	const [data, setData] = useState([]);
+	const [practiceDisplaying, setPracticeDisplaying] = useState(true);
+	const token = localStorage.getItem("users");
+	console.log("local token  ", token);
 	console.log("");
 
 	useEffect(() => {
-	fetch("/api/practise", {
-		method: "GET",
-		// body: JSON.stringify(body),
-		headers: {
-			"Content-Type": "application/json",
-			// Accept: "application/json",
-			Authorization:
-				`Bearer ${token}`,
-		},
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data[0].title);
-			setData(data);
-		});
-}, []);
+		fetch("/api/practise", {
+			method: "GET",
+			// body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json",
+				// Accept: "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data[0].title);
+				setData(data);
+			});
+	}, []);
 
 	return (
-		<div id="practice">
+		<Container
+			fluid
+			className="practice-main-container"
+			style={{ margin: "0", padding: "0" }}
+		>
 			{data[0] && (
 				<>
-					{noteDisplaying ? (
-						<Practice data={data} setNoteDisplaying={setNoteDisplaying} />
+					{practiceDisplaying ? (
+						<Practice data={data} setPracticeDisplaying={setPracticeDisplaying} />
 					) : (
 						<Note data={data} />
 					)}
 				</>
 			)}
-		</div>
+		</Container>
 	);
 };
 
