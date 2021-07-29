@@ -72,3 +72,10 @@
 .list-scroll::-webkit-scrollbar {
   display: none;
 }
+
+#reflect-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height:30px;
+}

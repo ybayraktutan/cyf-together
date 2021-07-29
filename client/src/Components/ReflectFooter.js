@@ -5,14 +5,14 @@ import homeIcon from "@iconify-icons/feather/home";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 
-import "../Style/Practice.css";
+import "../Style/Reflections.css";
 
 const ReflectFooter = () => {
 	const linkStyle = {
 		color: "#FF8181",
 	};
 	return (
-		<div id="practice-footer">
+		<div id="reflect-footer">
 			<div>
 				<Icon icon={homeIcon} />
 			</div>
