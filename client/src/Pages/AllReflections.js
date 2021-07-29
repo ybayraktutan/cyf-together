@@ -7,7 +7,7 @@ const AllReflections = () => {
 		console.log("local token  ", token);
 
 		useEffect(() => {
-			fetch("http://localhost:3100/api/reflects/display", {
+			fetch("api/reflects/display", {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
