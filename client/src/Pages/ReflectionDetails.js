@@ -29,8 +29,8 @@ const ReflectionDetails = () => {
 	}, [token]);
 
 	const linkStyle = {
-		width: "25vw",
-		height: "100vh",
+		width: "100vw",
+		height: "10vh",
 		borderRadius: "20px",
 	};
 
@@ -40,9 +40,11 @@ const ReflectionDetails = () => {
 
 	const body = note && (
 		<>
-			<h4>{note.title}</h4>
+			<h4 style={{ fontSize: "4vw" }}>
+				<b>{note.title}</b>
+			</h4>
 			<p>{moment(note.completed_time).format("dddd, MMMM D")}</p>
-			<div>
+			<div className="answer">
 				<p>{note.answer}</p>
 			</div>
 			<p>{`The params id is ${params.practiceId}`}</p>
@@ -51,28 +53,32 @@ const ReflectionDetails = () => {
 
 	return (
 		<div>
-			<Container>
-				<Card className="mb-3" style={linkStyle}>
+			<Container
+				fluid
+				className="ref-container"
+				style={{ margin: "0", padding: "0" }}
+			>
+				<Card className="mb-3 reflection-top" style={linkStyle}>
 					<Card.Header
-						className="reflect-top"
+						className="ref-top"
 						style={{ borderRadius: "20px 20px 0 0" }}
 					>
-						<div className="reflect-header">
+						<div className="ref-header">
 							<div>
-								<NavLink to="/reflects">
+								<NavLink to="/reflects" style={{ fontSize: "4vw" }}>
 									<Icon icon={chevronLeft} style={{ color: "white" }} />
 								</NavLink>
 								&nbsp;
-								<span style={({ textAlign: "justify" }, { fontSize: "15px" })}>
+								<span style={({ textAlign: "justify" }, { fontSize: "4vw" })}>
 									Reflect
 								</span>
 							</div>
 						</div>
 					</Card.Header>
-					<Card.Body className="list-scroll">{body}</Card.Body>
-					<Card.Footer>
-						<ReflectFooter />
-					</Card.Footer>
+				</Card>
+				<Card className="list-scroll">
+					<Card.Body>{body}</Card.Body>
+					<ReflectFooter />
 				</Card>
 			</Container>
 		</div>
