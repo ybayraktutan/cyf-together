@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../Style/Reflections.css";
 import moment from "moment";
@@ -10,7 +10,11 @@ const ReflectionItem = (props) => {
 	let dated = moment(props.date).format("dddd, MMMM D");
 
 	return (
-		<div>
+		<Container
+			fluid
+			className="item-container"
+			style={{ margin: "0", padding: "0" }}
+		>
 			<Link className="btn" to={`/reflects/${props.id}`}>
 				<li className="item">
 					<Badge
@@ -26,14 +30,12 @@ const ReflectionItem = (props) => {
 							</p>
 						</div>
 						<div>
-							<p style={{ color: "91919F" }}>
-								{dated}
-							</p>
+							<p style={{ color: "91919F" }}>{dated}</p>
 						</div>
 					</Badge>
 				</li>
 			</Link>
-		</div>
+		</Container>
 	);
 };
 

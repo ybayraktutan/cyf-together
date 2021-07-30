@@ -24,13 +24,20 @@
 }
 
 
-.container {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    padding:20px;
-    height: 100vh;
-  padding:0 ; 
+.reflect-container {
+  display: flex;
+  background-color: #6360FF;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  height: 100vh;
 }
 
 .badge-ref{
@@ -40,33 +47,68 @@
     font-weight: lighter;
     text-align: left;
     white-space: pre-wrap;
-    width: 20vw;
+    width: 100vw;
+    font-size: 3vw;
+}
+
+.title {  
+  margin: 1vh 4vh 2vh 4vh;   
+  height: 15%; 
+  width:100%;    
+}
+
+.option{  
+  height: 85%;  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  align-items: center;
+  border: 1px solid #F1F1FA;
+  background-color: #F1F1FA;
+  color: black;
+  width: 100%;
+  padding-top:2vh;
+}
+
+.option-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; 
+  align-items: center;
+  border: 1px solid #F1F1FA;
+  background-color: #F1F1FA;
+  color: black;
+  width: 100%;
+  padding-top:2vh;
 }
 
 
 .titles{
   display: flex;
   justify-content: space-around;
-  padding: 0.1rem;
+  text-align: center;
 }
 
 .reflect-top {
-   background-color: #6360FF; 
    color: white;
    padding: 1.45rem;
+   align-items:flex-start;
+} 
+
+.card-header{
+    background-color: transparent !important;
 }
 
-.reflect-header{
-  display: flex;
-  height:20px;
-  background-color: #6360FF;
-  align-items: center;
-  color: white;
+.reflect-top p{
+    display: flex;
+   text-align: left;
+   justify-content: left;
 }
 
 .list-scroll{
   height:150px;
   overflow-y: scroll;
+  width: 100%;
 }
 
 .list-scroll::-webkit-scrollbar {
@@ -74,8 +116,42 @@
 }
 
 #reflect-footer{
-    display: flex;
-    justify-content: space-around;
+    height:7vh;
+    font-size: 3vh;
+    background-color: white;
+    color:black;    
+    text-align: center;
     align-items: center;
-    height:30px;
+    border-radius: 50px 50px 0 0;
+    padding-top: 1vh;   
 }
+
+/* 
+@media (min-width: 992px) {
+  .reflect-main-container {
+  height: 100%; 
+  }
+  .reflect-container {
+  height: 100%; 
+}
+} */
+
+.card-text{
+  width: 100%;
+}
+
+.btn{
+  width: 100%;
+}
+
+/* .reflect-main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;  
+  background-color: #6360FF;
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  padding:0 ; 
+} */

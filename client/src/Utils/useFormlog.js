@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { useState, useEffect } from "react";
 
 const useForm = (callback, logValid) => {
