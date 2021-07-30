@@ -55,28 +55,24 @@ const Note = ({ data }) => {
 				</Card>
 				<Card
 					className="note-bottom"
-					style={{ backgroundColor: "#F1F1FA", padding: "0" }}
+					style={{ backgroundColor: "#F1F1FA", padding: "0", margin: "0" }}
 				>
-					<Card.Body>
-						<Form.Group
-							className="mb-3"
-							controlId="exampleForm.ControlTextarea1"
-						>
-							<Form.Control
-								as="textarea"
-								value={value}
-								onChange={(e) => setValue(e.target.value)}
-								style={{
-									fontSize: "3vw",
-									backgroundColor: "#F1F1FA",
-									border: "none",
-									width: "90vw",
-									padding: "6vw",
-									fontWeight: "bold",
-								}}
-							/>
-						</Form.Group>
-					</Card.Body>
+					<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+						<Form.Control
+							as="textarea"
+							value={value}
+							onChange={(e) => setValue(e.target.value)}
+							style={{
+								fontSize: "3vw",
+								backgroundColor: "#F1F1FA",
+								border: "none",
+								width: "90vw",
+								paddingTop: "6vw",
+								fontWeight: "bold",
+								height: "40vh",
+							}}
+						/>
+					</Form.Group>
 					<div className="btn-note">
 						<Link to="/confirmation" onClick={complete}>
 							<Button
@@ -88,6 +84,7 @@ const Note = ({ data }) => {
 									fontSize: "3vw",
 									borderRadius: "10px",
 									padding: "1vh 2vh",
+									marginRight:"2vw",
 								}}
 							>
 								<Icon icon={checkIcon} style={{ fontSize: "4vw" }} />
@@ -95,7 +92,7 @@ const Note = ({ data }) => {
 							</Button>{" "}
 						</Link>
 					</div>
-					<PracticeFooter />
+						<PracticeFooter />
 				</Card>
 			</Container>
 		);

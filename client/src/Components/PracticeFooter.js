@@ -2,7 +2,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
-import homeIcon from "@iconify-icons/feather/home";
+import activityIcon from "@iconify-icons/feather/activity";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 import { Container, Row, Col } from "react-bootstrap";
@@ -14,11 +14,11 @@ const PracticeFooter = () => {
 		color: "#FF8181",
 	};
 	return (
-		<Container fluid className="practice-footer">
+		<Container fluid id="practice-footer">
 			<Row>
 				<Col>
 					<NavLink to="/home" style={linkStyle}>
-						<Icon icon={homeIcon} />
+						<Icon icon={activityIcon} />
 					</NavLink>
 				</Col>
 				<Col>
@@ -33,20 +33,3 @@ const PracticeFooter = () => {
 };
 
 export default PracticeFooter;
-
-/*
-		<div id="practice-footer">
-			<div>
-				<NavLink to="/home" style={linkStyle}>
-					<Icon icon={homeIcon} />
-					{/* <p>Today</p> }
-				</NavLink>
-			</div>
-			<span>
-				<Icon icon={searchIcon} />
-			</span>
-			<span>
-				<Icon icon={keyIcon} />
-			</span>
-		</div>
-*/

@@ -31,15 +31,17 @@
 }
 
 
-.practice-footer{    
-    height:5vh;
+#practice-footer{    
+    height:7vh;
     font-size: 3vh;
     background-color: white;
     color:black;    
     text-align: center;
     align-items: center;
-    
+    border-radius: 50px 50px 0 0;
+    padding-top: 1vh;   
 }
+
 
 .practice-top {  
   padding: 6vh 1vw 4vh 2vw;
@@ -76,13 +78,12 @@
   border-radius: 50px 50px 0 0;
   background-color: white;
   color: black;  
-  padding: 2vw;
 }
 
 .description {
   color:black;
   font-size: 3vw;
-  padding:3vh 3vh 0 3vh;
+  padding:3vh 4vh 0 4vh;
 }
 
 .description p {    
