@@ -83,13 +83,19 @@
   font-size: 2vw;
 }
 
-#login h6 {
+#login h6, a {
   color:black;
   text-align: center;
   margin:2vh 0;
   font-size: 2vw;
 }
 
+.login-a {
+  color:black;
+  text-align: center;
+  margin:2vh 0;
+  font-size:2vw;
+}
 
 @media (min-width: 992px) {
   .form-container {
