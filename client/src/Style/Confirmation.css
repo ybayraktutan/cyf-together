@@ -39,9 +39,11 @@
     padding: 2vw; 
 }
 
-.btn-continue {    
-    margin-bottom: 10vh;
-    text-align: center;	
+.button-continue {
+  width: 80vw;
+  margin-top: 2vh;
+  margin-bottom: 10vh;
+  text-align: center;	
 }
 
 

@@ -19,17 +19,3 @@ const PracticeHeader = ({ data }) => {
 };
 
 export default PracticeHeader;
-
-/*
-return (
-	<Container fluid id="practice-header">
-		<Row>
-			<Col>Today&apos;s Practice.</Col>
-			<Col className="clock">
-				<Icon icon={clockIcon} />
-				<span> {data[0].time_expectation} min</span>
-			</Col>
-		</Row>
-	</Container>
-);
-*/

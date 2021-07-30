@@ -4,7 +4,8 @@ import { useHistory, Link } from "react-router-dom";
 import "../Style/Home.css";
 // import * as Icon from "react-feather";
 import { Icon } from "@iconify/react";
-import homeIcon from "@iconify-icons/feather/home";
+import activityIcon from '@iconify-icons/feather/activity';
+// import homeIcon from "@iconify-icons/feather/home";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 import Logout from "../Components/Logout";
@@ -51,7 +52,7 @@ const HomePage = () => {
 						style={({ textDecoration: "none" }, { color: "black" })}
 					>
 						<Card.Title className="option-title">
-							<Icon icon={homeIcon} style={{ fontSize: "5vw" }} />
+							<Icon icon={activityIcon} style={{ fontSize: "5vw" }} />
 							<h3>Practice</h3>
 						</Card.Title>
 						<Card.Text className="option-text" as="p">

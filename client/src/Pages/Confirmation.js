@@ -38,7 +38,7 @@ const Confirmation = () => {
 			>
 				<Link to="/home">
 					<Button
-						className="btn-continue"
+						className="button-continue"
 						type="button"
 						variant="default"
 						style={{
