@@ -59,10 +59,11 @@ router.post("/signin", (req, res) => {
 		});
 	}
 });
-const errorMessages = {};
+
+
 router.post("/register", (req, res) => {
 	console.log("register api");
-	const { firstname, email, password, passwordCheck } = req.body;
+	const { firstname, email, password } = req.body;
 	const isValidEmail = EmailValidator.validate(email);
 	const schema = new passwordValidator();
 	schema
@@ -83,13 +84,6 @@ router.post("/register", (req, res) => {
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
 	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
-	if (!isValidPassword) {
-		errorMessages.password = "Please enter a valid password";
-	} else if (!isValidEmail) {
-		errorMessages.email = "Please enter a valid email";
-	} else if (password !== passwordCheck) {
-		errorMessages.passwordCheck = "Password do not match";
-	}
 	console.log(hashedPassword);
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
@@ -124,7 +118,7 @@ router.post("/register", (req, res) => {
 			}
 		);
 	} else {
-		res.json({ msg: "Please enter the correct details!!!", errorMessages });
+		res.json({ msg: "Please enter the correct details!!!"});
 	}
 });
 

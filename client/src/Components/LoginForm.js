@@ -8,21 +8,33 @@ import "../Style/Form.css";
 
 const LoginForm = () => {
 	const { handleChange, values } = useForm();
-	const [errors, setErrors] = useState({
-		email: "",
-		password: "",
-		emptyField: "",
-	});
+	const [error, setError] = useState("");
 
 	const history = useHistory();
 	const register = () => history.push("/register");
 
-	//const { email, password } = values;
-
 	function handleSubmit(e) {
 		e.preventDefault();
+		const { email, password } = values;
 
-		const body = { email: values.email, password: values.password };
+		const body = { email, password };
+
+		// Validation
+		if (!email && !password) {
+			return setError("The fields cannot be empty");
+		}
+
+		if (!email) {
+			return setError("Please enter an email");
+		}
+
+		if (!password) {
+			return setError("Please enter a password");
+		}
+
+
+		setError("");
+
 		let result = fetch("/api/signin", {
 			method: "POST",
 			body: JSON.stringify(body),
@@ -39,41 +51,34 @@ const LoginForm = () => {
 					history.push("/home");
 				} else if (data.auth === "error") {
 					console.log(data);
-					setErrors((prevState) => {
-						const state = {
-							...prevState,
-							email: data.errors.email,
-						};
-						return state;
-					});
-					history.push("/login");
-				} else if (data.msg) {
-					setErrors((prevState) => {
-						const state = {
-							...prevState,
-							emptyField: data.msg,
-						};
-						return state;
-					});
-				}
-						localStorage.setItem("users", data.token);
 
+					setError(data.errors.email);
+
+					history.push("/login");
+				}
+
+				localStorage.setItem("users", data.token);
 			});
+
 		localStorage.setItem("users", result);
 	}
-const linkStyleInput = {
-	width: "85vw",
-	height: "7vh",
-	borderRadius: "30px",
-	fontSize: "3vw",
-	padding: "2vw 4vw",
-	margin:"2vh 0",
-};
+
+	const linkStyleInput = {
+		width: "85vw",
+		height: "7vh",
+		borderRadius: "30px",
+		fontSize: "3vw",
+		padding: "2vw 4vw",
+		margin:"2vh 0",
+	};
+
+	const errorMessage = error && <p>{error}</p>;
 
 	return (
 		<div id="login">
+			{errorMessage}
+
 			<Form onSubmit={handleSubmit}>
-				{errors.email.length > 0 && <p>{errors.email}</p>}
 				<Form.Group className="mb-3">
 					<Form.Control
 						type="email"
@@ -134,7 +139,7 @@ const linkStyleInput = {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-					<Card.Link style={{color:"black"}}href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit">
+					<Card.Link style={ { color:"black" } }href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit">
 						T&C and Privacy Policy
 					</Card.Link>
 				</Form.Group>
