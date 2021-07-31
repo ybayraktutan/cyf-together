@@ -83,8 +83,7 @@ const Note = ({ data }) => {
 									backgroundColor: "#7DC579",
 									fontSize: "3vw",
 									borderRadius: "10px",
-									padding: "1vh 2vh",
-									marginRight:"2vw",
+									padding: "1vh 2vh",	
 								}}
 							>
 								<Icon icon={checkIcon} style={{ fontSize: "4vw" }} />

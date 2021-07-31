@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 import activityIcon from "@iconify-icons/feather/activity";
-import homeIcon from "@iconify-icons/feather/home";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 
@@ -23,7 +22,7 @@ const ReflectFooter = () => {
 	return (
 		<Container fluid id="reflect-footer">
 			<Row>
-				<Col sm>
+				<Col>
 					<NavLink to="/home">
 						<Icon icon={activityIcon} style={linkSize} />
 					</NavLink>
@@ -31,7 +30,7 @@ const ReflectFooter = () => {
 				<Col sm>
 					<Icon icon={searchIcon} style={linkSize} />
 				</Col>
-				<Col sm>
+				<Col>
 					<NavLink to="/reflects" style={linkStyle}>
 						<Icon icon={keyIcon} />
 					</NavLink>

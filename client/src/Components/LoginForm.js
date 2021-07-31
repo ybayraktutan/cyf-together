@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import useForm from "../Utils/useFormlog";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "../Style/Form.css";
 
 
@@ -140,7 +140,11 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-					<Link to="/termsconditions" onClick={termsConditions}>
+					<Link
+						to="/termsconditions"
+						onClick={termsConditions}
+						style={{ color: "black" }}
+					>
 						T&C and Privacy Policy
 					</Link>
 				</Form.Group>

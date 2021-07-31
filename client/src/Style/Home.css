@@ -61,8 +61,7 @@
   font-weight: bold;
 }
 
-.btn-continue {
-  width: 80vw;
+.btn-continue {  
   margin-top: 2vh;
   text-align: center;
 }
@@ -70,13 +69,13 @@
 .log-out{
   text-align: right;
   margin: 2vh;
-  color:black;
-  font-size: 3vw;
+  color:black;  
   align-self: flex-end; 
 }
 
 #log-out{
-    text-decoration: none;       
+    text-decoration: none;
+    font-size: 3vw;       
     cursor: pointer;    
 }
 

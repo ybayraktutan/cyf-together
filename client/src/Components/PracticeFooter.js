@@ -6,19 +6,15 @@ import activityIcon from "@iconify-icons/feather/activity";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 import { Container, Row, Col } from "react-bootstrap";
-
 import "../Style/Practice.css";
 
 const PracticeFooter = () => {
-	const linkStyle = {
-		color: "#FF8181",
-		fontSize: "3vh",
-	};
+
 	return (
 		<Container fluid id="practice-footer">
 			<Row>
 				<Col>
-					<NavLink to="/home" style={linkStyle}>
+					<NavLink to="/home" style={{ color: "#FF8181", fontSize: "3vh" }}>
 						<Icon icon={activityIcon} />
 					</NavLink>
 				</Col>
@@ -26,7 +22,9 @@ const PracticeFooter = () => {
 					<Icon icon={searchIcon} />
 				</Col>
 				<Col>
-					<Icon icon={keyIcon} />
+					<NavLink to="/reflects" style={{ color: "black", fontSize: "3vh" }}>
+						<Icon icon={keyIcon} />
+					</NavLink>
 				</Col>
 			</Row>
 		</Container>
