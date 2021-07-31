@@ -11,11 +11,11 @@ import "../Style/Reflections.css";
 const ReflectFooter = () => {
 	const linkStyle = {
 		color: "#FF8181",
-		fontSize: "3vw",
+		fontSize: "3vh",
 	};
 
 	const linkSize = {
-		fontSize: "3vw",
+		fontSize: "3vh",
 		color: "black",
 	};
 
@@ -27,7 +27,7 @@ const ReflectFooter = () => {
 						<Icon icon={activityIcon} style={linkSize} />
 					</NavLink>
 				</Col>
-				<Col sm>
+				<Col>
 					<Icon icon={searchIcon} style={linkSize} />
 				</Col>
 				<Col>

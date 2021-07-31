@@ -75,7 +75,7 @@ const ReflectionList = ({ data }) => {
 	});
 
 	return (
-		<div>
+
 			<Container
 				fluid
 				className="reflect-container"
@@ -130,7 +130,6 @@ const ReflectionList = ({ data }) => {
 					<ReflectFooter />
 				</Card>
 			</Container>
-		</div>
 	);
 };
 
