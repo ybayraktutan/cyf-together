@@ -82,7 +82,7 @@ const ReflectionList = ({ data }) => {
 				style={{ margin: "0", padding: "0" }}
 			>
 				<Card
-					className="titl"
+					className="titl-reflection"
 					variant="default"
 					style={{ backgroundColor: "#6360FF", border: "none" }}
 				>
@@ -94,7 +94,7 @@ const ReflectionList = ({ data }) => {
 					</Card.Header>
 				</Card>
 				<Card
-					className="options"
+					className="options-reflection"
 					variant="default"
 					style={{
 						backgroundColor: "#F1F1FA",
@@ -103,7 +103,7 @@ const ReflectionList = ({ data }) => {
 					}}
 				>
 					<Card.Text>
-						<Row className="titles">
+						<Row className="titles-reflection">
 							<Col sm id="title-one">
 								<span>
 									<NavLink to="/practice" style={titleStyle}>
