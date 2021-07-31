@@ -1,13 +1,25 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import useForm from "../Utils/useFormreg";
 import "../Style/Form.css";
 import { Form, Button, Card } from "react-bootstrap";
 
 const RegistrationForm = () => {
-	const { handleChange, values } = useForm();
+	const [values, setValues] = useState({
+		firstname: "",
+		email: "",
+		password: "",
+		passwordCheck: "",
+	});
 	const [error, setError] = useState("");
+
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setValues({
+			...values,
+			[id]: value,
+		});
+	};
 
 	const history = useHistory();
 	const login = () => history.push("/login");
@@ -39,9 +51,6 @@ const RegistrationForm = () => {
 		// 		"Passwords must contain a number and at least 8 characters"
 		// 	);
 		// }
-
-
-
 
 		setError("");
 		const body = {

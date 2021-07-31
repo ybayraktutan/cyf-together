@@ -1,14 +1,23 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import useForm from "../Utils/useFormlog";
 import { Form, Button, Card } from "react-bootstrap";
 import "../Style/Form.css";
 
-
 const LoginForm = () => {
-	const { handleChange, values } = useForm();
+	const [values, setValues] = useState({
+		email: "",
+		password: "",
+	});
 	const [error, setError] = useState("");
+
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setValues({
+			...values,
+			[id]: value,
+		});
+	};
 
 	const history = useHistory();
 	const register = () => history.push("/register");
@@ -32,7 +41,6 @@ const LoginForm = () => {
 			return setError("Please enter a password");
 		}
 
-
 		setError("");
 
 		let result = fetch("/api/signin", {
@@ -40,7 +48,7 @@ const LoginForm = () => {
 			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
-				"Accept": "application/json",
+				Accept: "application/json",
 			},
 		})
 			.then((res) => res.json())
@@ -69,7 +77,7 @@ const LoginForm = () => {
 		borderRadius: "30px",
 		fontSize: "3vw",
 		padding: "2vw 4vw",
-		margin:"2vh 0",
+		margin: "2vh 0",
 	};
 
 	const errorMessage = error && <p>{error}</p>;
@@ -139,7 +147,10 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-					<Card.Link style={ { color:"black" } }href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit">
+					<Card.Link
+						style={{ color: "black" }}
+						href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit"
+					>
 						T&C and Privacy Policy
 					</Card.Link>
 				</Form.Group>
