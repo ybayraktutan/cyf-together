@@ -12,6 +12,7 @@ import "../Style/Practice.css";
 const PracticeFooter = () => {
 	const linkStyle = {
 		color: "#FF8181",
+		fontSize: "3vh",
 	};
 	return (
 		<Container fluid id="practice-footer">

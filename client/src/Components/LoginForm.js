@@ -12,6 +12,7 @@ const LoginForm = () => {
 
 	const history = useHistory();
 	const register = () => history.push("/register");
+	const termsConditions = () =>history.push("/termsconditions");
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -139,9 +140,9 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-					<Card.Link style={ { color:"black" } }href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit">
+					<Link to="/termsconditions" onClick={termsConditions}>
 						T&C and Privacy Policy
-					</Card.Link>
+					</Link>
 				</Form.Group>
 			</Form>
 		</div>
