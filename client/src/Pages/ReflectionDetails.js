@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import "../Style/Reflections.css";

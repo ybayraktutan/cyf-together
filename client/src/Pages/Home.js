@@ -2,10 +2,8 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../Style/Home.css";
-// import * as Icon from "react-feather";
 import { Icon } from "@iconify/react";
-import activityIcon from '@iconify-icons/feather/activity';
-// import homeIcon from "@iconify-icons/feather/home";
+import activityIcon from "@iconify-icons/feather/activity";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 import Logout from "../Components/Logout";
