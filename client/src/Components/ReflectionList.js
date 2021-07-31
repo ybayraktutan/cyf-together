@@ -16,11 +16,6 @@ function newest (a, b) {
 }
 
 const ReflectionList = ({ data }) => {
-	// const linkStyle = {
-	// 	width: "25vw",
-	// 	height: "100vh",
-	// 	borderRadius: "20px",
-	// };
 
 	const titleStyle = {
 		fontSize: "4vw",
@@ -87,7 +82,7 @@ const ReflectionList = ({ data }) => {
 				style={{ margin: "0", padding: "0" }}
 			>
 				<Card
-					className="title"
+					className="titl-reflection"
 					variant="default"
 					style={{ backgroundColor: "#6360FF", border: "none" }}
 				>
@@ -99,7 +94,7 @@ const ReflectionList = ({ data }) => {
 					</Card.Header>
 				</Card>
 				<Card
-					className="option"
+					className="options-reflection"
 					variant="default"
 					style={{
 						backgroundColor: "#F1F1FA",
@@ -108,7 +103,7 @@ const ReflectionList = ({ data }) => {
 					}}
 				>
 					<Card.Text>
-						<Row className="titles">
+						<Row className="titles-reflection">
 							<Col sm id="title-one">
 								<span>
 									<NavLink to="/practice" style={titleStyle}>

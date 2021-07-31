@@ -16,7 +16,6 @@ const RegistrationForm = () => {
 		e.preventDefault();
 
 		const { email, password, passwordCheck } = values;
-		const body = { email, password };
 
 		// Validation
 		if (!email && !password) {
@@ -35,13 +34,22 @@ const RegistrationForm = () => {
 			return setError("Passwords must match");
 		}
 
-		if (!/^(.{0,7}|[^0-9]*|[^A-Z]*|[a-zA-Z0-9]*)$/i.test(password)) {
-			return setError(
-				"Passwords must contain a number and at least 8 characters"
-			);
-		}
+		// if (!/^(.{0,7}|[^0-9]*|[^A-Z]*|[a-z]*)$/i.test(password)) {
+		// 	return setError(
+		// 		"Passwords must contain a number and at least 8 characters"
+		// 	);
+		// }
+
+
+
 
 		setError("");
+		const body = {
+			firstname: values.firstname,
+			email: values.email,
+			password: values.password,
+			passwordCheck: values.password,
+		};
 		let result = fetch("/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
@@ -61,6 +69,7 @@ const RegistrationForm = () => {
 					data.register === "error-registereduser"
 				) {
 					console.log(data);
+					setError("User already exists");
 					history.push("/register");
 				}
 			});
@@ -177,4 +186,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-

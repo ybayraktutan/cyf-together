@@ -30,7 +30,7 @@ const ReflectionItem = (props) => {
 							</p>
 						</div>
 						<div>
-							<p style={{ color: "91919F" }}>{dated}</p>
+							<p style={{ color: "#91919F" }}>{dated}</p>
 						</div>
 					</Badge>
 				</li>
