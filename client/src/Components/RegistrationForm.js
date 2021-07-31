@@ -34,12 +34,14 @@ const RegistrationForm = () => {
 			return setError("Passwords must match");
 		}
 
-		const passNum = /\d/.test(password);
-		if (passNum < 8 ) {
-			return setError(
-				"Passwords must contain a number and at least 8 characters"
-			);
-		}
+		// if (!/^(.{0,7}|[^0-9]*|[^A-Z]*|[a-z]*)$/i.test(password)) {
+		// 	return setError(
+		// 		"Passwords must contain a number and at least 8 characters"
+		// 	);
+		// }
+
+
+
 
 		setError("");
 		const body = {
@@ -184,4 +186,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-

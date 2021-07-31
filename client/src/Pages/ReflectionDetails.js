@@ -47,7 +47,6 @@ const ReflectionDetails = () => {
 			<div className="answer">
 				<p>{note.answer}</p>
 			</div>
-			<p>{`The params id is ${params.practiceId}`}</p>
 		</>
 	);
 
