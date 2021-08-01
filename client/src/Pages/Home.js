@@ -94,7 +94,7 @@ const HomePage = () => {
 					Continue
 				</Button>
 				<div className="log-out">
-					<Logout nav={"Log Out"} />
+					<Logout />
 				</div>
 			</Card>
 		</Container>
