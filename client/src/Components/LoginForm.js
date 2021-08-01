@@ -1,14 +1,23 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import useForm from "../Utils/useFormlog";
 import { Form, Button } from "react-bootstrap";
 import "../Style/Form.css";
 
-
 const LoginForm = () => {
-	const { handleChange, values } = useForm();
+	const [values, setValues] = useState({
+		email: "",
+		password: "",
+	});
 	const [error, setError] = useState("");
+
+	const handleChange = (e) => {
+		const { id, value } = e.target;
+		setValues({
+			...values,
+			[id]: value,
+		});
+	};
 
 	const history = useHistory();
 	const register = () => history.push("/register");
@@ -33,7 +42,6 @@ const LoginForm = () => {
 			return setError("Please enter a password");
 		}
 
-
 		setError("");
 
 		let result = fetch("/api/signin", {
@@ -41,7 +49,7 @@ const LoginForm = () => {
 			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
-				"Accept": "application/json",
+				Accept: "application/json",
 			},
 		})
 			.then((res) => res.json())
@@ -70,7 +78,7 @@ const LoginForm = () => {
 		borderRadius: "30px",
 		fontSize: "3vw",
 		padding: "2vw 4vw",
-		margin:"2vh 0",
+		margin: "2vh 0",
 	};
 
 	const errorMessage = error && <p>{error}</p>;
@@ -140,10 +148,12 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
+
 					<Link
 						to="/termsconditions"
 						onClick={termsConditions}
 						style={{ color: "black" }}
+
 					>
 						T&C and Privacy Policy
 					</Link>
