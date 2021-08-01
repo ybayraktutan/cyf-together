@@ -1,7 +1,7 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import "../Style/Form.css";
 
 const LoginForm = () => {
@@ -21,6 +21,7 @@ const LoginForm = () => {
 
 	const history = useHistory();
 	const register = () => history.push("/register");
+	const termsConditions = () =>history.push("/termsconditions");
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -147,12 +148,15 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-					<Card.Link
+
+					<Link
+						to="/termsconditions"
+						onClick={termsConditions}
 						style={{ color: "black" }}
-						href="https://docs.google.com/document/d/1cFbL3tTzqIqhw0KOWo-GcovGaudEC9iBzuiKdypfwCY/edit"
+
 					>
 						T&C and Privacy Policy
-					</Card.Link>
+					</Link>
 				</Form.Group>
 			</Form>
 		</div>

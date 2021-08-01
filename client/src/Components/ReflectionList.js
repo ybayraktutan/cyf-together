@@ -75,14 +75,14 @@ const ReflectionList = ({ data }) => {
 	});
 
 	return (
-		<div>
+
 			<Container
 				fluid
 				className="reflect-container"
 				style={{ margin: "0", padding: "0" }}
 			>
 				<Card
-					className="titl-reflection"
+					className="title-reflection"
 					variant="default"
 					style={{ backgroundColor: "#6360FF", border: "none" }}
 				>
@@ -130,7 +130,6 @@ const ReflectionList = ({ data }) => {
 					<ReflectFooter />
 				</Card>
 			</Container>
-		</div>
 	);
 };
 

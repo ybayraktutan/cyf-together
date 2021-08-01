@@ -5,10 +5,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import PracticePage from "./Pages/PracticePage";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import Note from "./Components/Note";
 import Confirmation from "./Pages/Confirmation";
 import AllReflections from "./Pages/AllReflections";
+import TermsConditions from "./Pages/TermsConditions";
 import ReflectionDetails from "./Pages/ReflectionDetails";
+
 import { PageNotFound } from "./Pages/PageNotFound";
 import "./Style/App.css";
 
@@ -25,6 +26,7 @@ function App() {
 					<Route path="/home" component={Home}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
 					<Route path="/confirmation" component={Confirmation}></Route>
+					<Route path="/termsconditions" component={TermsConditions}></Route>;
 					<Route exact path="/reflects">
 						<AllReflections />
 					</Route>
