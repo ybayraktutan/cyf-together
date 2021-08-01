@@ -2,14 +2,18 @@
 import React from "react";
 import { useHistory, NavLink } from "react-router-dom";
 
-const Logout = (props) => {
+const Logout = () => {
 	const history = useHistory();
 
-	const login = () => history.push("/login");
+	const login = () => {
+		history.push("/login");
+		localStorage.clear();
+	}
+
 	return (
 		<div>
 			<NavLink to="/login" onClick={login} id="log-out">
-				{props.nav}
+				Log Out
 			</NavLink>
 		</div>
 	);
