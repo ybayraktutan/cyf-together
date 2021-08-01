@@ -53,7 +53,7 @@
 }
 
 
-.titl-reflection {  
+.title-reflection {  
   margin: 1vh 4vh 2vh 4vh;   
   height: 15%; 
   width:90%;    
@@ -116,14 +116,11 @@
     text-align: center;
     align-items: center;
     border-radius: 50px 50px 0 0;
-    padding-top: 1vh;   
+    padding-top: 1vh;
+    margin-top:1 vh;   
 }
 
 .card-text{
-  width: 100%;
-}
-
-.btn{
   width: 100%;
 }
 
@@ -148,18 +145,31 @@
   height: 100vh;
 }
 
+
 .list-scroll{
   overflow-y: scroll;
   height: 90vh; 
-  width:100vw;
+  width: 90vw;
   margin: 0 4vh 0 4vh;   
   background-color: #FCFCFF;
-  border-radius: 50px 50px 0 0;  
+  /* border-radius: 50px 50px 0 0;   */
   font-size: 3vw;
   padding:30px;
   text-align: justify;
 }
 
+
+.reflect-details{
+  overflow-y: scroll;
+  height: 90vh; 
+  width: 100vw;
+  margin: 0 4vh 0 4vh;   
+  background-color: #FCFCFF;
+  border-radius: 50px 50px 0 0;
+  font-size: 3vw;
+  padding:30px;
+  text-align: justify;
+}
 .list-scroll::-webkit-scrollbar {
   display: none;
 }

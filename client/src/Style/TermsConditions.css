@@ -1,0 +1,32 @@
+
+#terms-conditions-container {
+    background-color: #6360FF;
+    color: white;
+    padding: 3vh;
+}
+
+#terms-conditions-container h1{
+    font-size: 3vh;
+    font-weight: bold;    
+}
+
+#terms-conditions-container h3{
+    font-size: 2vh; 
+    font-weight: bold;     
+}
+
+#terms-conditions-container p{
+    font-size: 1.5vh;    
+}
+
+
+#practice-footer{    
+    height:7vh;
+    font-size: 3vh;
+    background-color: white;
+    color:black;    
+    text-align: center;
+    align-items: center;
+    border-radius: 50px 50px 0 0;
+    padding-top: 1vh;   
+}
