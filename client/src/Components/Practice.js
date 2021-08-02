@@ -75,7 +75,7 @@ const Practice = ({ data, setPracticeDisplaying }) => {
 							color: "white",
 							backgroundColor: "#6360FF",
 							width: "100%",
-							fontSize: "3vw",
+							fontSize: "4vw",
 							borderRadius: "20px",
 							padding: "2vh",
 						}}

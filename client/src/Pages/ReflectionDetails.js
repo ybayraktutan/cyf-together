@@ -75,7 +75,7 @@ const ReflectionDetails = () => {
 						</div>
 					</Card.Header>
 				</Card>
-				<Card className="list-scroll">
+				<Card className="reflect-details">
 					<Card.Body>{body}</Card.Body>
 					<ReflectFooter />
 				</Card>

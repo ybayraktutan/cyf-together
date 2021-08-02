@@ -87,13 +87,14 @@ const HomePage = () => {
 						padding: "30px",
 						fontSize: "4vw",
 						borderRadius: "20px",
+						width: "85vw",
 					}}
 					onClick={practicePage}
 				>
 					Continue
 				</Button>
 				<div className="log-out">
-					<Logout nav={"Log Out"} />
+					<Logout />
 				</div>
 			</Card>
 		</Container>
