@@ -16,10 +16,8 @@ const PracticePage = () => {
 	useEffect(() => {
 		fetch("/api/practise", {
 			method: "GET",
-			// body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
-				// Accept: "application/json",
 				Authorization: `Bearer ${token}`,
 			},
 		})
@@ -28,7 +26,7 @@ const PracticePage = () => {
 				console.log(data[0].title);
 				setData(data);
 			});
-	}, []);
+	}, [token]);
 
 	return (
 		<Container

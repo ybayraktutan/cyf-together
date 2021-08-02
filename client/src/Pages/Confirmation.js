@@ -7,7 +7,7 @@ import { Emoji } from "emoji-mart";
 import "../Style/Confirmation.css";
 
 const Confirmation = () => {
-	
+
 	return (
 		<Container
 			fluid

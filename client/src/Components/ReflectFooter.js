@@ -1,9 +1,9 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 import activityIcon from "@iconify-icons/feather/activity";
-import homeIcon from "@iconify-icons/feather/home";
 import searchIcon from "@iconify-icons/feather/search";
 import keyIcon from "@iconify-icons/feather/key";
 
