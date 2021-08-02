@@ -7,7 +7,9 @@ import { DatabaseError } from "pg";
 import { now } from "moment-timezone";
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
-const moment = require("moment-timezone");
+// const moment = require("moment-timezone");
+const moment = require("moment");
+
 
 const router = new Router();
 
@@ -143,9 +145,11 @@ router.get("/practise", authenticateToken, (req, res) => {
 		])
 		.then((result) => {
 			let lastpractice_time=result.rows[0].lastpractise_time;
-			let differenceInDay = (now() - lastpractice_time) / (1000 * 60 * 60 * 24);
-			if (differenceInDay >= 1) {
-				console.log(differenceInDay);
+			let now = moment().format("YYYY-MM-DD");
+			let formattedLastpractice_time =
+				moment(lastpractice_time).format("YYYY-MM-DD");
+
+			if (now !== formattedLastpractice_time) {
 				let user_last_practice_id = result.rows[0].lastpractise_id;
 				pool
 					.query("SELECT id FROM practises ORDER BY id DESC LIMIT 1")
@@ -157,7 +161,6 @@ router.get("/practise", authenticateToken, (req, res) => {
 									user_last_practice_id + 1,
 								])
 								.then((result) => {
-									console.log("inside query");
 									return res.json(result.rows);
 								})
 								.catch((e) => res.send(JSON.stringify(e)));
@@ -170,7 +173,9 @@ router.get("/practise", authenticateToken, (req, res) => {
 								.catch((e) => res.send(JSON.stringify(e)));
 						}
 					});
-			} else {res.json({"error":"user can't do a new practice "})}
+			} else {
+				res.json({ error: "user can't do a new practice " });
+			}
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
