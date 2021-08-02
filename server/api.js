@@ -174,7 +174,10 @@ router.get("/practise", authenticateToken, (req, res) => {
 						}
 					});
 			} else {
-				res.json({ error: "user can't do a new practice " });
+				res.json({
+					error:
+						"You have already done today's practice, please come back tomorrow. ",
+				});
 			}
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
