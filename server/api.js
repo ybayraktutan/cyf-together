@@ -174,7 +174,7 @@ router.get("/practise", authenticateToken, (req, res) => {
 						}
 					});
 			} else {
-				res.json({
+				res.status(403).json({
 					error:
 						"You have already done today's practice, please come back tomorrow. ",
 				});
