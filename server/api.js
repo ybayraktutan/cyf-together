@@ -4,9 +4,12 @@ const uuid = require("uuid");
 import SHA256 from "crypto-js/sha256";
 import * as EmailValidator from "email-validator";
 import { DatabaseError } from "pg";
+import { now } from "moment-timezone";
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
-const moment = require("moment-timezone");
+// const moment = require("moment-timezone");
+const moment = require("moment");
+
 
 const router = new Router();
 
@@ -137,32 +140,45 @@ function authenticateToken(req, res, next) {
 router.get("/practise", authenticateToken, (req, res) => {
 	const userID = req.user.userid;
 	pool
-		.query("SELECT lastpractise_id FROM users WHERE id=$1", [userID])
+		.query("SELECT lastpractise_id,lastpractise_time  FROM users WHERE id=$1", [
+			userID,
+		])
 		.then((result) => {
-			let user_last_practice_id = result.rows[0].lastpractise_id;
-			pool
-				.query("SELECT id FROM practises ORDER BY id DESC LIMIT 1")
-				.then((result) => {
-					let last_practise_in_db = result.rows[0].id;
-					if (user_last_practice_id < last_practise_in_db) {
-						pool
-							.query("SELECT * FROM practises WHERE id=$1", [
-								user_last_practice_id + 1,
-							])
-							.then((result) => {
-								console.log("inside query");
-								return res.json(result.rows);
-							})
-							.catch((e) => res.send(JSON.stringify(e)));
-					} else {
-						pool
-							.query("SELECT * FROM practises WHERE id=1")
-							.then((result) => {
-								return res.json(result.rows);
-							})
-							.catch((e) => res.send(JSON.stringify(e)));
-					}
+			let lastpractice_time=result.rows[0].lastpractise_time;
+			let now = moment().format("YYYY-MM-DD");
+			let formattedLastpractice_time =
+				moment(lastpractice_time).format("YYYY-MM-DD");
+
+			if (now !== formattedLastpractice_time) {
+				let user_last_practice_id = result.rows[0].lastpractise_id;
+				pool
+					.query("SELECT id FROM practises ORDER BY id DESC LIMIT 1")
+					.then((result) => {
+						let last_practise_in_db = result.rows[0].id;
+						if (user_last_practice_id < last_practise_in_db) {
+							pool
+								.query("SELECT * FROM practises WHERE id=$1", [
+									user_last_practice_id + 1,
+								])
+								.then((result) => {
+									return res.json(result.rows);
+								})
+								.catch((e) => res.send(JSON.stringify(e)));
+						} else {
+							pool
+								.query("SELECT * FROM practises WHERE id=1")
+								.then((result) => {
+									return res.json(result.rows);
+								})
+								.catch((e) => res.send(JSON.stringify(e)));
+						}
+					});
+			} else {
+				res.status(403).json({
+					error:
+						"You have already done today's practice, please come back tomorrow. ",
 				});
+			}
 		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
