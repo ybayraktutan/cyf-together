@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import { Router } from "express";
 import { pool } from "./db";
 const uuid = require("uuid");
@@ -10,11 +9,7 @@ const jwt = require("jsonwebtoken");
 const moment = require("moment-timezone");
 
 const router = new Router();
-router.get("/", (_, res) => {
-	pool.query("SELECT * FROM users", (error, result) => {
-		res.json(result.rows);
-	});
-});
+
 router.post("/signin", (req, res) => {
 	//take email and password from front end
 	const { email, password } = req.body;
@@ -38,7 +33,7 @@ router.post("/signin", (req, res) => {
 						usertype: "user",
 					};
 					const token = jwt.sign(user, "SECRETmurattiisthelatestversionofme", {
-						expiresIn: 3600,
+						expiresIn: "7 days",
 					});
 					// return res.json({ auth: "success" });
 					return res.json({ token: token, auth: "success" });
