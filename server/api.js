@@ -1,16 +1,14 @@
 import { Router } from "express";
-import { pool } from "./db";
-const uuid = require("uuid");
+import "dotenv/config";
 import SHA256 from "crypto-js/sha256";
 import * as EmailValidator from "email-validator";
-import { DatabaseError } from "pg";
-import { now } from "moment-timezone";
+import process from "process";
+import { pool } from "./db";
+const uuid = require("uuid");
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
-// const moment = require("moment-timezone");
 const moment = require("moment");
-
-
+// const moment = require("moment-timezone");
 const router = new Router();
 
 router.post("/signin", (req, res) => {
@@ -19,7 +17,9 @@ router.post("/signin", (req, res) => {
 
 	//hash and salt the password
 	const hashedPassword = SHA256(password).toString();
-	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
+	const saltedPassword = SHA256(
+		hashedPassword + process.env.PASSWORD_SALT
+	).toString();
 	//check hashed password in database and return token if passwords match
 	if (email && password) {
 		pool
@@ -35,9 +35,7 @@ router.post("/signin", (req, res) => {
 						userid: result.rows[0].id,
 						usertype: "user",
 					};
-					const token = jwt.sign(user, "SECRETmurattiisthelatestversionofme", {
-						expiresIn: "7 days",
-					});
+					const token = jwt.sign(user, process.env.TOKEN_SECRET, {expiresIn: "7 days"	});
 					// return res.json({ auth: "success" });
 					return res.json({ token: token, auth: "success" });
 				} else {
@@ -81,7 +79,7 @@ router.post("/register", (req, res) => {
 
 	const isValidPassword = schema.validate(password);
 	const hashedPassword = SHA256(password).toString();
-	const saltedPassword = SHA256(hashedPassword + "21@-!89oO").toString();
+	const saltedPassword = SHA256(hashedPassword + process.env.PASSWORD_SALT).toString();
 	console.log(hashedPassword);
 	if (isValidEmail && isValidPassword && firstname) {
 		const newUser = {
@@ -129,7 +127,7 @@ function authenticateToken(req, res, next) {
 		return res.sendStatus(401);
 	}
 	//verify token if it is verified contunie with end point otherwise send a forbidden 403 message to front end
-	jwt.verify(token, "SECRETmurattiisthelatestversionofme", (err, user) => {
+	jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
 		if (err) {
 			res.sendStatus(403);
 		}
