@@ -71,3 +71,14 @@ See the guidance in the [wiki].
 [react router]: https://reactrouter.com/web
 [webpack]: https://webpack.js.org/
 [wiki]: https://github.com/textbook/starter-kit/wiki
+
+
+## Setting up .env file
+Create a .env file in the root directory of your project. Add environment-specific variables on new lines in the form of NAME=VALUE. In this case:
+```
+
+TOKEN_SECRET=<key>
+
+PASSWORD_SALT=<key>
+
+DATABASE_URL=postgres://<username>:<password>@localhost/cyf
