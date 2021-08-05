@@ -23,7 +23,7 @@ const PracticePage = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data[0].title);
+				//console.log(data[0].title);
 				setData(data);
 			});
 	}, [token]);

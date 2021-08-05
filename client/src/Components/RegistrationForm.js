@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../Style/Form.css";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const RegistrationForm = () => {
 	const [values, setValues] = useState({
