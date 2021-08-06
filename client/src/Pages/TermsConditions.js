@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "../Style/TermsConditions.css";
 
 
@@ -393,7 +394,22 @@ const TermsConditions = () => {
 						If you have any questions about this Privacy Policy, please contact
 						us at deepa@inthefeelz.com
 					</p>
-					
+					<Link to="/login">
+						<Button
+							className="btn-back"
+							type="button"
+							variant="default"
+							style={{
+								color: "white",
+								backgroundColor: "#FF8181",
+								fontSize: "3vw",
+								borderRadius: "10px",
+								padding: "1vh 2vh",
+							}}
+						>
+							Back
+						</Button>
+					</Link>
 				</Col>
 			</Row>
 		</Container>
