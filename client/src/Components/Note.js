@@ -88,7 +88,7 @@ const Note = ({ data }) => {
 							>
 								<Icon icon={checkIcon} style={{ fontSize: "4vw" }} />
 								Done
-							</Button>{" "}
+							</Button>
 						</Link>
 					</div>
 						<PracticeFooter />
