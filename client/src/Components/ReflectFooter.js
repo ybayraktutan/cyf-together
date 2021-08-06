@@ -10,12 +10,12 @@ import keyIcon from "@iconify-icons/feather/key";
 import "../Style/Reflections.css";
 
 const ReflectFooter = () => {
-	const linkStyle = {
+	const linkStyleRed = {
 		color: "#FF8181",
 		fontSize: "2.5vh",
 	};
 
-	const linkSize = {
+	const linkStyleBlack = {
 		fontSize: "2.5vh",
 		color: "black",
 	};
@@ -24,20 +24,20 @@ const ReflectFooter = () => {
 		<Container fluid id="reflect-footer">
 			<Row>
 				<Col>
-					<NavLink to="/home" style={linkSize}>
+					<NavLink to="/home" style={linkStyleBlack}>
 						<Icon icon={homeIcon} />
 					</NavLink>
 				</Col>
 				<Col>
-					<NavLink to="/practice" style={linkSize}>
+					<NavLink to="/practice" style={linkStyleBlack}>
 						<Icon icon={activityIcon} />
 					</NavLink>
 				</Col>
 				<Col>
-					<Icon icon={searchIcon} style={linkSize} />
+					<Icon icon={searchIcon} style={linkStyleBlack} />
 				</Col>
 				<Col>
-					<NavLink to="/reflects" style={linkStyle}>
+					<NavLink to="/reflects" style={linkStyleRed}>
 						<Icon icon={keyIcon} />
 					</NavLink>
 				</Col>
