@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../Style/Form.css";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const RegistrationForm = () => {
 	const [values, setValues] = useState({
@@ -47,11 +47,10 @@ const RegistrationForm = () => {
 			return setError("Passwords must match");
 		}
 
-		// if (!/^(.{0,7}|[^0-9]*|[^A-Z]*|[a-z]*)$/i.test(password)) {
-		// 	return setError(
-		// 		"Passwords must contain a number and at least 8 characters"
-		// 	);
-		// }
+		let regValue = /(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(.{8,})/;
+		if (!regValue.test(password)) {
+			return setError ("Passwords must contain a number and at least 8 characters");
+		}
 
 		setError("");
 		const body = {
@@ -129,6 +128,7 @@ const RegistrationForm = () => {
 						placeholder="Password"
 						style={linkStyleInput}
 						value={values.password}
+						// pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 						onChange={(e) => handleChange(e)}
 					/>
 				</Form.Group>

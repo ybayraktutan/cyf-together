@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Router } from "express";
 import "dotenv/config";
 import SHA256 from "crypto-js/sha256";
@@ -55,7 +56,6 @@ router.post("/signin", (req, res) => {
 		});
 	}
 });
-
 
 router.post("/register", (req, res) => {
 	console.log("register api");
@@ -142,7 +142,7 @@ router.get("/practise", authenticateToken, (req, res) => {
 			userID,
 		])
 		.then((result) => {
-			let lastpractice_time=result.rows[0].lastpractise_time;
+			let lastpractice_time = result.rows[0].lastpractise_time;
 			let now = moment().format("YYYY-MM-DD");
 			let formattedLastpractice_time =
 				moment(lastpractice_time).format("YYYY-MM-DD");
@@ -181,7 +181,6 @@ router.get("/practise", authenticateToken, (req, res) => {
 		.catch((e) => res.send(JSON.stringify(e)));
 });
 
-
 router.post("/reflects", authenticateToken, (req, res) => {
 	console.log("hello from reflect");
 	const { answer, practice_id } = req.body;
@@ -191,7 +190,7 @@ router.post("/reflects", authenticateToken, (req, res) => {
 	pool
 		.query(
 			"INSERT INTO reflects (user_id,answer,practice_id,completed_time) VALUES ($1,$2,$3,$4)",
-			[userID, answer, practice_id,timestamp]
+			[userID, answer, practice_id, timestamp]
 		)
 		.then((result) => {
 			pool
@@ -216,7 +215,7 @@ router.get("/reflects/display", authenticateToken, (req, res) => {
 		)
 		.then((result) => {
 			return res.json(result.rows);
-				})
+		})
 		.catch((e) => res.send(JSON.stringify(e)));
 });
 

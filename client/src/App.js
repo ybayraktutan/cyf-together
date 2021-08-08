@@ -9,7 +9,7 @@ import Confirmation from "./Pages/Confirmation";
 import AllReflections from "./Pages/AllReflections";
 import TermsConditions from "./Pages/TermsConditions";
 import ReflectionDetails from "./Pages/ReflectionDetails";
-
+import PracticesCompleted from "./Pages/PracticesCompleted";
 import { PageNotFound } from "./Pages/PageNotFound";
 import "./Style/App.css";
 
@@ -24,6 +24,7 @@ function App() {
 					<Route path="/login" component={Login}></Route>
 					<Route path="/register" component={Register}></Route>
 					<Route path="/home" component={Home}></Route>
+					<Route path="/complete" component={PracticesCompleted}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
 					<Route path="/confirmation" component={Confirmation}></Route>
 					<Route path="/termsconditions" component={TermsConditions}></Route>;

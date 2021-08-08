@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Button, Card } from "react-bootstrap";
@@ -6,8 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Emoji } from "emoji-mart";
 import "../Style/Confirmation.css";
 
-const Confirmation = () => {
-
+const PracticesCompleted = () => {
 	return (
 		<Container
 			fluid
@@ -20,8 +18,8 @@ const Confirmation = () => {
 				style={{ backgroundColor: "#6360FF", border: "none" }}
 			>
 				<Card.Body>
-					<Card.Title as="h6">Great job</Card.Title>
-					<Card.Title as="h2">Practice complete!</Card.Title>
+					<Card.Title as="h6">Great Job</Card.Title>
+					<Card.Title as="h2">Practice complete! Come back tomorrow</Card.Title>
 					<Emoji
 						set={"apple"}
 						emoji={"star-struck"}
@@ -57,5 +55,4 @@ const Confirmation = () => {
 	);
 };
 
-
-export default Confirmation;
+export default PracticesCompleted;
