@@ -10,12 +10,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../Style/Practice.css";
 
 const PracticeFooter = () => {
-	const linkStyle = {
+	const linkStyleRed = {
 		color: "#FF8181",
 		fontSize: "2.5vh",
 	};
 
-	const linkSize = {
+	const linkStyleBlack = {
 		fontSize: "2.5vh",
 		color: "black",
 	};
@@ -24,12 +24,12 @@ const PracticeFooter = () => {
 		<Container fluid id="practice-footer">
 			<Row>
 				<Col>
-					<NavLink to="/home" style={linkSize}>
+					<NavLink to="/home" style={linkStyleBlack}>
 						<Icon icon={homeIcon} />
 					</NavLink>
 				</Col>
 				<Col>
-					<NavLink to="/practice" style={linkStyle}>
+					<NavLink to="/practice" style={linkStyleRed}>
 						<Icon icon={activityIcon} />
 					</NavLink>
 				</Col>
@@ -37,7 +37,7 @@ const PracticeFooter = () => {
 					<Icon icon={searchIcon} />
 				</Col>
 				<Col>
-					<NavLink to="/reflects" style={linkSize}>
+					<NavLink to="/reflects" style={linkStyleBlack}>
 						<Icon icon={keyIcon} />
 					</NavLink>
 				</Col>
