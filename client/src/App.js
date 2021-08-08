@@ -24,7 +24,7 @@ function App() {
 					<Route path="/login" component={Login}></Route>
 					<Route path="/register" component={Register}></Route>
 					<Route path="/home" component={Home}></Route>
-					<Route path="/complete"> <PracticesCompleted /> </Route>
+					<Route path="/complete" component={PracticesCompleted}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
 					<Route path="/confirmation" component={Confirmation}></Route>
 					<Route path="/termsconditions" component={TermsConditions}></Route>;

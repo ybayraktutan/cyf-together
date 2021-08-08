@@ -20,6 +20,7 @@ const HomePage = () => {
 	const [isPracticed, setIsPracticed] = useState(false);
 	const [clicked, setClicked] = useState(false);
 
+
 	useEffect(() => {
 		fetch("/api/practise", {
 			method: "GET",
@@ -30,10 +31,9 @@ const HomePage = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				if (
-					data.error ===
-					"You have already done today's practice, please come back tomorrow. "
-				) {
+	console.log("use eff is practice test:");
+	console.log(data);
+				if (data.error) {
 					setIsPracticed(true);
 				}
 			});
@@ -68,7 +68,7 @@ const HomePage = () => {
 
 	const practiced = (
 		<Link
-			to="#"
+			to="/complete"
 			onClick={practiceClick}
 			style={({ textDecoration: "none" }, { color: "black" })}
 		>
@@ -78,9 +78,7 @@ const HomePage = () => {
 
 	console.log("isPracticed test:", isPracticed);
 
-	const practice = isPracticed
-		? practiced
-		: unpracticed;
+	const practice = isPracticed ? practiced : unpracticed;
 
 	const home = (
 		<Container
@@ -145,7 +143,6 @@ const HomePage = () => {
 						borderRadius: "20px",
 						width: "85vw",
 					}}
-					onClick={() => <PracticesCompleted />}
 				>
 					Continue
 				</Button>
@@ -156,9 +153,7 @@ const HomePage = () => {
 		</Container>
 	);
 
-	return clicked
-		? <PracticesCompleted />
-		: home;
+	return clicked ? <PracticesCompleted /> : home;
 };
 
 
