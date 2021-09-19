@@ -9,17 +9,23 @@ import keyIcon from "@iconify-icons/feather/key";
 import Logout from "../Components/Logout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Card, Button } from "react-bootstrap";
-import PracticesCompleted from "./PracticesCompleted";
+
 
 const HomePage = () => {
 	const history = useHistory();
-	const practicePage = () => history.push("/practice");
+	const practicePage = () => {
+		if (isPracticed) {
+			history.push("/practicecompleted");
+			console.log(`complete ${isPracticed}`);
+		} else {
+			history.push("/practice");
+			console.log(`not complete ${isPracticed}`);
+		}
+	};
+
 	const reflectPage = () => history.push("/reflects");
 	const token = localStorage.getItem("users");
-
-	const [isPracticed, setIsPracticed] = useState(false);
-	const [clicked, setClicked] = useState(false);
-
+	const [isPracticed, setIsPracticed] = useState(true);
 
 	useEffect(() => {
 		fetch("/api/practise", {
@@ -31,56 +37,30 @@ const HomePage = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-	console.log("use eff is practice test:");
-	console.log(data);
-				if (data.error) {
+				if (
+					data.error ===
+					"You have already done today's practice, please come back tomorrow. "
+				) {
 					setIsPracticed(true);
+					console.log(data.error);
+					console.log(`in true fetch ${isPracticed}`);
+				} else {
+					setIsPracticed(false);
+					console.log(`in false fetch ${isPracticed}`);
 				}
 			});
-	}, [token]);
+	}, [token, isPracticed]);
 
-	const practiceContent = (
-		<>
-			<Card.Title className="option-title">
-				<Icon icon={activityIcon} style={{ fontSize: "5vw" }} />
-				<h3>Practice</h3>
-			</Card.Title>
-			<Card.Text className="option-text" as="p">
-				Build positive routines and habits
-			</Card.Text>
-		</>
-	);
+	const buttonStyle = {
+		color: "#FFF",
+		backgroundColor: "#7DC579",
+		padding: "30px",
+		fontSize: "4vw",
+		borderRadius: "20px",
+		width: "85vw",
+	};
 
-	const unpracticed = (
-		<Link
-			to="/practice"
-			onClick={practicePage}
-			style={({ textDecoration: "none" }, { color: "black" })}
-		>
-			{practiceContent}
-		</Link>
-	);
-
-	function practiceClick () {
-		console.log("practiced");
-		setClicked(true);
-	}
-
-	const practiced = (
-		<Link
-			to="/complete"
-			onClick={practiceClick}
-			style={({ textDecoration: "none" }, { color: "black" })}
-		>
-			{practiceContent}
-		</Link>
-	);
-
-	console.log("isPracticed test:", isPracticed);
-
-	const practice = isPracticed ? practiced : unpracticed;
-
-	const home = (
+	return (
 		<Container
 			fluid
 			className="home-container"
@@ -110,7 +90,19 @@ const HomePage = () => {
 				}}
 			>
 				<Card.Body>
-					{practice}
+					<Link
+						to="/practice"
+						onClick={practicePage}
+						style={({ textDecoration: "none" }, { color: "black" })}
+					>
+						<Card.Title className="option-title">
+							<Icon icon={activityIcon} style={{ fontSize: "5vw" }} />
+							<h3>Practice</h3>
+						</Card.Title>
+						<Card.Text className="option-text" as="p">
+							Build positive routines and habits
+						</Card.Text>
+					</Link>
 					<Link
 						to="/reflects"
 						onClick={reflectPage}
@@ -132,29 +124,22 @@ const HomePage = () => {
 						Bite-sized expert learning on relationships
 					</Card.Text>
 				</Card.Body>
+				<Link>
 				<Button
 					className="btn-continue"
 					variant="default"
-					style={{
-						color: "#FFF",
-						backgroundColor: "#7DC579",
-						padding: "30px",
-						fontSize: "4vw",
-						borderRadius: "20px",
-						width: "85vw",
-					}}
+					style={buttonStyle}
+					onClick={practicePage}
 				>
 					Continue
 				</Button>
+				</Link>
 				<div className="log-out">
 					<Logout />
 				</div>
 			</Card>
 		</Container>
 	);
-
-	return clicked ? <PracticesCompleted /> : home;
 };
-
 
 export default HomePage;
