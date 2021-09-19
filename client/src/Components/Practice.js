@@ -12,6 +12,14 @@ import "../Style/Practice.css";
 const Practice = ({ data, setPracticeDisplaying }) => {
 
 	const categories = data[0].category.split(",");
+	const practiceButtonStyle = {
+		color: "white",
+		backgroundColor: "#6360FF",
+		width: "100%",
+		fontSize: "4vw",
+		borderRadius: "20px",
+		padding: "2vh",
+	};
 
 	return (
 		<Container
@@ -71,14 +79,7 @@ const Practice = ({ data, setPracticeDisplaying }) => {
 						type="button"
 						variant="default"
 						className="btn-practice"
-						style={{
-							color: "white",
-							backgroundColor: "#6360FF",
-							width: "100%",
-							fontSize: "4vw",
-							borderRadius: "20px",
-							padding: "2vh",
-						}}
+						style={practiceButtonStyle}
 					>
 						Practice
 					</Button>

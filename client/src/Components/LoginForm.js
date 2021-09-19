@@ -5,6 +5,33 @@ import { Form, Button } from "react-bootstrap";
 import "../Style/Form.css";
 
 const LoginForm = () => {
+
+	const linkStyleInput = {
+		width: "85vw",
+		height: "7vh",
+		borderRadius: "30px",
+		fontSize: "3vw",
+		padding: "2vw 4vw",
+		margin: "2vh 0",
+	};
+
+	const loginButtonStyle = {
+		color: "#FFF",
+		backgroundColor: "#6360FF",
+		padding: "30px",
+		fontSize: "3vw",
+		borderRadius: "20px",
+		alignItems: "center",
+	};
+
+	const registerButtonStyle = {
+		color: "#FFF",
+		backgroundColor: "#FF8181",
+		padding: "30px",
+		fontSize: "3vw",
+		borderRadius: "20px",
+	};
+
 	const [values, setValues] = useState({
 		email: "",
 		password: "",
@@ -72,14 +99,6 @@ const LoginForm = () => {
 		localStorage.setItem("users", result);
 	}
 
-	const linkStyleInput = {
-		width: "85vw",
-		height: "7vh",
-		borderRadius: "30px",
-		fontSize: "3vw",
-		padding: "2vw 4vw",
-		margin: "2vh 0",
-	};
 
 	const errorMessage = error && <p>{error}</p>;
 
@@ -113,14 +132,7 @@ const LoginForm = () => {
 						className="btn-login"
 						type="submit"
 						variant="default"
-						style={{
-							color: "#FFF",
-							backgroundColor: "#6360FF",
-							padding: "30px",
-							fontSize: "3vw",
-							borderRadius: "20px",
-							alignItems: "center",
-						}}
+						style={loginButtonStyle}
 					>
 						Sign in
 					</Button>
@@ -135,13 +147,7 @@ const LoginForm = () => {
 							className="btn-register"
 							variant="default"
 							type="submit"
-							style={{
-								color: "#FFF",
-								backgroundColor: "#FF8181",
-								padding: "30px",
-								fontSize: "3vw",
-								borderRadius: "20px",
-							}}
+							style={registerButtonStyle}
 						>
 							Register
 						</Button>

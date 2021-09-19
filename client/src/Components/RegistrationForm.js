@@ -128,11 +128,9 @@ const RegistrationForm = () => {
 						placeholder="Password"
 						style={linkStyleInput}
 						value={values.password}
-						// pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 						onChange={(e) => handleChange(e)}
 					/>
 				</Form.Group>
-				{/* {errors.passwordCheck && <p>{errors.passwordCheck}</p>} */}
 				<Form.Group className="mb-3">
 					<Form.Control
 						type="password"

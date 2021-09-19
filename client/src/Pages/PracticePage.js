@@ -9,7 +9,6 @@ import PracticesCompleted from "./PracticesCompleted";
 
 const PracticePage = () => {
 	const [data, setData] = useState([]);
-	// const [resError, setError] = useState("");
 	const [practiceDisplaying, setPracticeDisplaying] = useState(true);
 	const token = localStorage.getItem("users");
 	console.log("local token  ", token);
@@ -26,12 +25,8 @@ const PracticePage = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log("data is");
-				console.log(data);
+				console.log(`data is ${data}`);
 				setData(data);
-				// if(data.error){
-				// 	setError("error");
-				// }
 			});
 	}, [token]);
 
