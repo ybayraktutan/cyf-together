@@ -53,7 +53,6 @@ const LoginForm = () => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		const { email, password } = values;
-
 		const body = { email, password };
 
 		// Validation
@@ -81,21 +80,14 @@ const LoginForm = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data.token);
 				if (data.auth === "success") {
-					console.log(data);
 					history.push("/home");
 				} else if (data.auth === "error") {
-					console.log(data);
-
 					setError(data.errors.email);
-
 					history.push("/login");
 				}
-
 				localStorage.setItem("users", data.token);
 			});
-
 		localStorage.setItem("users", result);
 	}
 
@@ -142,7 +134,6 @@ const LoginForm = () => {
 				</Form.Group>
 				<Form.Group className="mb-3">
 					<Link to="/register" onClick={register}>
-						{" "}
 						<Button
 							className="btn-register"
 							variant="default"
@@ -154,12 +145,10 @@ const LoginForm = () => {
 					</Link>
 				</Form.Group>
 				<Form.Group className="mb-3 login-a">
-
 					<Link
 						to="/termsconditions"
 						onClick={termsConditions}
 						style={{ color: "black" }}
-
 					>
 						T&C and Privacy Policy
 					</Link>

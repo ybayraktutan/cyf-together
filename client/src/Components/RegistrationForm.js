@@ -5,6 +5,32 @@ import "../Style/Form.css";
 import { Form, Button } from "react-bootstrap";
 
 const RegistrationForm = () => {
+
+	const linkStyleInput = {
+		width: "85vw",
+		height: "7vh",
+		borderRadius: "30px",
+		fontSize: "3vw",
+		padding: "2vw 4vw",
+		margin: "0",
+	};
+	const registerButtonStyle = {
+		color: "#FFF",
+		backgroundColor: "#6360FF",
+		padding: "30px",
+		fontSize: "3vw",
+		borderRadius: "20px",
+		alignItems: "center",
+	};
+	const loginButtonStyle = {
+		color: "#FFF",
+		backgroundColor: "#FF8181",
+		padding: "30px",
+		fontSize: "3vw",
+		borderRadius: "20px",
+	};
+
+
 	const [values, setValues] = useState({
 		firstname: "",
 		email: "",
@@ -69,30 +95,18 @@ const RegistrationForm = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				if (data.register === "success") {
-					console.log(data);
 					history.push("/login");
 				} else if (
 					data.register === "error" ||
 					data.register === "error-registereduser"
 				) {
-					console.log(data);
 					setError("User already exists");
 					history.push("/register");
 				}
 			});
 		localStorage.setItem("users", result);
 	}
-
-	const linkStyleInput = {
-		width: "85vw",
-		height: "7vh",
-		borderRadius: "30px",
-		fontSize: "3vw",
-		padding: "2vw 4vw",
-		margin: "0",
-	};
 
 	const errorMessage = error && <p>{error}</p>;
 
@@ -146,14 +160,7 @@ const RegistrationForm = () => {
 						className="btn-login"
 						type="submit"
 						variant="default"
-						style={{
-							color: "#FFF",
-							backgroundColor: "#6360FF",
-							padding: "30px",
-							fontSize: "3vw",
-							borderRadius: "20px",
-							alignItems: "center",
-						}}
+						style={registerButtonStyle}
 					>
 						Register
 					</Button>
@@ -163,18 +170,11 @@ const RegistrationForm = () => {
 				</Form.Group>
 				<Form.Group className="mb-3">
 					<Link to="/login" onClick={login}>
-						{" "}
 						<Button
 							className="btn-register"
 							variant="default"
 							type="submit"
-							style={{
-								color: "#FFF",
-								backgroundColor: "#FF8181",
-								padding: "30px",
-								fontSize: "3vw",
-								borderRadius: "20px",
-							}}
+							style={loginButtonStyle}
 						>
 							Sign in
 						</Button>

@@ -4,13 +4,13 @@ import Register from "./Pages/Register";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import PracticePage from "./Pages/PracticePage";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Confirmation from "./Pages/Confirmation";
 import AllReflections from "./Pages/AllReflections";
 import TermsConditions from "./Pages/TermsConditions";
 import ReflectionDetails from "./Pages/ReflectionDetails";
 import PracticesCompleted from "./Pages/PracticesCompleted";
-import { PageNotFound } from "./Pages/PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/App.css";
 
 

@@ -1,8 +1,9 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React from "react";
+import { Container } from "react-bootstrap";
 import RegistrationForm from "../Components/RegistrationForm";
 import Header from "../Components/Header";
-import { Container } from "react-bootstrap";
+
 
 const Register = () => {
 	return (
