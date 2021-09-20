@@ -9,7 +9,6 @@ const uuid = require("uuid");
 const passwordValidator = require("password-validator");
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
-// const moment = require("moment-timezone");
 const router = new Router();
 
 router.post("/signin", (req, res) => {
@@ -21,6 +20,7 @@ router.post("/signin", (req, res) => {
 	const saltedPassword = SHA256(
 		hashedPassword + process.env.PASSWORD_SALT
 	).toString();
+
 	//check hashed password in database and return token if passwords match
 	if (email && password) {
 		pool
@@ -126,7 +126,7 @@ function authenticateToken(req, res, next) {
 	if (token == null) {
 		return res.sendStatus(401);
 	}
-	//verify token if it is verified contunie with end point otherwise send a forbidden 403 message to front end
+	//verify token if it is verified continue with end point otherwise send a forbidden 403 message to front end
 	jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
 		if (err) {
 			res.sendStatus(403);
