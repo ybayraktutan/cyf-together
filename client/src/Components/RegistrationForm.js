@@ -146,6 +146,10 @@ const RegistrationForm = () => {
 						value={values.password}
 						onChange={(e) => handleChange(e)}
 					/>
+					<Form.Text className="text-muted" style={{ fontSize: "2vw" }}>
+						The password must contain at least 8 characters including one
+						uppercase and one number
+					</Form.Text>
 				</Form.Group>
 				<Form.Group className="mb-3">
 					<Form.Control
