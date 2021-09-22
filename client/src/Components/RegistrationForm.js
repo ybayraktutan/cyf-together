@@ -56,26 +56,28 @@ const RegistrationForm = () => {
 
 		const { email, password, passwordCheck } = values;
 
-		// Validation
+		// Validation - empty field
 		if (!email && !password) {
 			return setError("The fields cannot be empty");
 		}
-
+		// Validation of email
 		if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
 			return setError("Email address is invalid");
 		}
-
+		// Validation - empty field
 		if (!password) {
 			return setError("Password is required");
 		}
-
+		// Validation - password match
 		if (password !== passwordCheck) {
 			return setError("Passwords must match");
 		}
-
+		// Validation - password contain a number and at least 8 characters uppercase and lowercase
 		let regValue = /(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(.{8,})/;
 		if (!regValue.test(password)) {
-			return setError ("Passwords must contain a number and at least 8 characters");
+			return setError(
+				"Passwords must contain a number and at least 8 characters"
+			);
 		}
 
 		setError("");

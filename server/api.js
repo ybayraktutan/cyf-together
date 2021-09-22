@@ -30,14 +30,15 @@ router.post("/signin", (req, res) => {
 			])
 			.then((result) => {
 				if (result.rows.length > 0) {
-					//create token and return as a json object
 					const user = {
 						email: email,
 						userid: result.rows[0].id,
 						usertype: "user",
 					};
-					const token = jwt.sign(user, process.env.TOKEN_SECRET, {expiresIn: "7 days"	});
-					// return res.json({ auth: "success" });
+					//generate a token and return as a json object
+					const token = jwt.sign(user, process.env.TOKEN_SECRET, {
+						expiresIn: "7 days",
+					});
 					return res.json({ token: token, auth: "success" });
 				} else {
 					return res.status(400).json({
