@@ -87,6 +87,9 @@ const LoginForm = () => {
 					history.push("/login");
 				}
 				localStorage.setItem("users", data.token);
+			})
+			.catch((error) => {
+				console.log("Error:", error);
 			});
 		localStorage.setItem("users", result);
 	}

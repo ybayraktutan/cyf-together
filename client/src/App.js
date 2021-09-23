@@ -24,19 +24,13 @@ function App() {
 					<Route path="/login" component={Login}></Route>
 					<Route path="/register" component={Register}></Route>
 					<Route path="/home" component={Home}></Route>
-					<Route path="/complete" component={PracticesCompleted}></Route>
 					<Route path="/practice" component={PracticePage}></Route>
+					<Route path="/complete" component={PracticesCompleted}></Route>
 					<Route path="/confirmation" component={Confirmation}></Route>
 					<Route path="/termsconditions" component={TermsConditions}></Route>;
-					<Route exact path="/reflects">
-						<AllReflections />
-					</Route>
-					<Route path="/reflects/:practiceId">
-						<ReflectionDetails />
-					</Route>
-					<Route path="*">
-						<PageNotFound />
-					</Route>
+					<Route exact path="/reflects" component={AllReflections}></Route>;
+					<Route path="/reflects/:practiceId" component={ReflectionDetails}></Route>
+					<Route path="*" component={PageNotFound}></Route>
 				</Switch>
 			</BrowserRouter>
 		</div>

@@ -106,7 +106,10 @@ const RegistrationForm = () => {
 					setError("User already exists");
 					history.push("/register");
 				}
-			});
+			})
+			.catch((error) => {
+            console.log("Error:", error);
+          });
 		localStorage.setItem("users", result);
 	}
 

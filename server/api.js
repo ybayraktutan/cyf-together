@@ -115,7 +115,7 @@ router.post("/register", (req, res) => {
 			}
 		);
 	} else {
-		res.json({ msg: "Please enter the correct details!!!" });
+		res.status(400).json({ msg: "Please enter the correct details!!!" });
 	}
 });
 
