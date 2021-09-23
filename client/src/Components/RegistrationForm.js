@@ -72,7 +72,7 @@ const RegistrationForm = () => {
 		if (password !== passwordCheck) {
 			return setError("Passwords must match");
 		}
-		// Validation - password contain a number and at least 8 characters uppercase and lowercase
+		// Validation - password contain at least 8 characters, a number uppercase and lowercase
 		let regValue = /(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*)(.{8,})/;
 		if (!regValue.test(password)) {
 			return setError(
@@ -108,8 +108,8 @@ const RegistrationForm = () => {
 				}
 			})
 			.catch((error) => {
-            console.log("Error:", error);
-          });
+				console.log("Error:", error);
+			});
 		localStorage.setItem("users", result);
 	}
 
